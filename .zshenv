@@ -6,13 +6,13 @@
 # output or assume the shell is attached to a tty.
 
 export EDITOR='vim'
-#export GIT_EDITOR='gvim -f'
-export BC_ENV_ARGS="-l ${HOME}/.bc"
-#export PAGER='less'
+export DICTIONARY=en_US
+
 export LESS='-R --ignore-case'
 export JLESS='-R --ignore-case'
-export LV='-c'
 export JLESSCHARSET='ja'
-export RUBYLIB=$HOME/ruby/lib
+export LV='-c'
+
+export BC_ENV_ARGS="-l ${HOME}/.bc"
+
 export VTE_CJK_WIDTH=1
-export DICTIONARY=en_US
