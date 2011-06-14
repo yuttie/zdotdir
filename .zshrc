@@ -35,7 +35,7 @@ SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
 # other variables
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>|'
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # 256-colorization by correcting TERM variable
 if [ "$TERM" = "xterm" ]; then
