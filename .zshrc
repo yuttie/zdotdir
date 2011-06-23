@@ -96,7 +96,6 @@ alias open='xdg-open'
 alias lpxdvi='pxdvi -geometry 1005x711 -paper a4r'
 #alias chrm='chromium --memory-model=low'
 #alias chrm='chromium --allow-outdated-plugins'
-function chrm() { chromium --disable-webgl $* > /dev/null 2>&1 &! }
 
 # Global aliases -- These do not have to be
 # at the beginning of the command line.
@@ -112,7 +111,8 @@ alias -g X='| xargs'
 
 ################################################################
 #### Shell functions
-# refe
+function wb() { chromium --disable-webgl $* > /dev/null 2>&1 &! }
+function fm() { nautilus --no-desktop --no-default-window --browser $* > /dev/null 2>&1 &! }
 function refe() {
   /usr/bin/refe $1 | iconv -f euc-jp -t utf-8 | less
 }
