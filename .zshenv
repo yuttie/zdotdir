@@ -14,5 +14,3 @@ export JLESSCHARSET='ja'
 export LV='-c'
 
 export BC_ENV_ARGS="-l ${HOME}/.bc"
-
-export VTE_CJK_WIDTH=1
