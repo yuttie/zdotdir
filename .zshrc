@@ -6,10 +6,10 @@ fi
 
 # Command search path
 path=(~/bin
-      ~/.gem/ruby/1.8/bin
-      $path
-      /usr/local/texlive/p2009/bin/x86_64-unknown-linux-gnu
-      /usr/local/texlive/p2009/bin/i686-pc-linux-gnu)
+      ~/.gem/ruby/1.8
+      ~/.gem/ruby/1.9.1
+      ~/.cabal/bin
+      $path)
 
 # Where to look for autoloaded function definitions
 fpath=($fpath ~/.zfunc)
