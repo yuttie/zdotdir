@@ -39,14 +39,7 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # 256-colorization by correcting TERM variable
 if [ "$TERM" = "xterm" ]; then
-    if [ -n "$XTERM_VERSION" ]; then
-        TERM="xterm-256color"
-    elif [ "$COLORTERM" = "gnome-terminal" ]; then
-        TERM="xterm-256color"
-        # "gnome-256color"だとscreenを使ったときに端末のスクロール機能が
-        # 利用できなくなる。
-        #TERM="gnome-256color"
-    fi
+    TERM="xterm-256color"
 elif [ "$TERM" = "screen" ]; then
     TERM="screen-256color"
 elif [ "$TERM" = "screen-bce" ]; then
