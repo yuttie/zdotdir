@@ -110,6 +110,9 @@ function fm() { pcmanfm $* > /dev/null 2>&1 &! }
 function refe() {
   /usr/bin/refe $1 | iconv -f euc-jp -t utf-8 | less
 }
+function encrypt() {
+  gpg -o ~/${1##*/}.gpg --cipher-algo AES256 --compress-level 0 -c $1
+}
 
 freload() { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
 
