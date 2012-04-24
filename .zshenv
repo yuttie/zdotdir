@@ -5,6 +5,7 @@
 # .zshenv should not contain commands that product
 # output or assume the shell is attached to a tty.
 
+export LANG='en_US.UTF-8'
 export EDITOR='vim'
 export DICTIONARY=en_US
 
