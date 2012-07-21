@@ -95,7 +95,6 @@ alias lpxdvi='pxdvi -geometry 1005x711 -paper a4r'
 # at the beginning of the command line.
 alias -g M='| more'
 alias -g L='| less'
-alias -g LS='| less -S'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g S='| sort'
