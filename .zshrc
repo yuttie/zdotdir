@@ -24,8 +24,8 @@ typeset -U path cdpath fpath manpath
 PROMPT=$'%B%(!.%F{red}.%F{green})%n@%m%f %F{magenta}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f
 %F{blue}%#%f%b '
 # prompt for right side of screen
-zstyle ':vcs_info:*' formats       '%F{yellow}(%s)-[%F{green}%b%F{yellow}]%f%u%c-'
-zstyle ':vcs_info:*' actionformats '%F{yellow}(%s)-[%F{red}%b%F{yellow}|%F{red}%a%F{yellow}]%f%u%c-'
+zstyle ':vcs_info:*' formats       '%F{yellow}(%f%s%F{yellow})-[%F{green}%b%F{yellow}]%f%u%c'
+zstyle ':vcs_info:*' actionformats '%F{yellow}(%f%s%F{yellow})-[%F{green}%b%F{yellow}|%F{red}%a%F{yellow}]%f%u%c'
 function precmd() { LANG=en_US.UTF-8 vcs_info }
 RPROMPT='${vcs_info_msg_0_}'
 
