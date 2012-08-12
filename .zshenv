@@ -15,3 +15,9 @@ export JLESSCHARSET='ja'
 export LV='-c'
 
 export BC_ENV_ARGS="-l ${HOME}/.bc"
+
+if [ -n "$DISPLAY" ]; then
+  export BROWSER='google-chrome'
+else
+  export BROWSER='links'
+fi
