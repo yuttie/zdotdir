@@ -104,7 +104,7 @@ alias -g X='| xargs'
 
 ################################################################
 #### Shell functions
-function wb() { firefox $* > /dev/null 2>&1 &! }
+function wb() { $BROWSER $* > /dev/null 2>&1 &! }
 function fm() { pcmanfm $* > /dev/null 2>&1 &! }
 function refe() {
   /usr/bin/refe $1 | iconv -f euc-jp -t utf-8 | less
