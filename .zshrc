@@ -251,6 +251,9 @@ zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns \
 # ignore completion functions (until the _ignored completer)
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
+# Disable completion for some commands.
+compdef -d p4
+
 
 ################################################################
 #### Key Bindings
