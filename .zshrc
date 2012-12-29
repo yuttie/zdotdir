@@ -79,7 +79,6 @@ alias elc='emacs -batch --load ~/.emacs --funcall batch-byte-compile'
 alias eix='nocorrect eix'
 alias ssh='nocorrect ssh'
 alias screen='screen -U'
-alias tmux='tmux -u'
 alias watch='noglob watch'
 alias jfbterm='LANG=ja_JP.UTF-8 jfbterm -q -f ~/.jfbterm.conf'
 #alias jfbterm='jfbterm -q -f ~/.jfbterm.conf'
@@ -111,6 +110,14 @@ function refe() {
 }
 function encrypt() {
   gpg -o ~/${1##*/}.gpg --cipher-algo AES256 --compress-level 0 -c $1
+}
+
+tmux() {
+  if [ -n "$1" ]; then
+    command tmux -u attach -t $1 || command tmux -u new -s $1
+  else
+    command tmux -u
+  fi
 }
 
 freload() { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
