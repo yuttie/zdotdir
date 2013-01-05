@@ -112,7 +112,7 @@ function encrypt() {
   gpg -o ~/${1##*/}.gpg --cipher-algo AES256 --compress-level 0 -c $1
 }
 
-tmux() {
+tm() {
   if [ -n "$1" ]; then
     command tmux -u attach -t $1 || command tmux -u new -s $1
   else
