@@ -103,8 +103,9 @@ alias -g X='| xargs'
 
 ################################################################
 #### Shell functions
-function ec() { emacsclient --alternate-editor='' --create-frame "$@"&! }
+function ecg() { emacsclient --alternate-editor='' --create-frame "$@"&! }
 function ect() { emacsclient --alternate-editor='' --create-frame --tty "$@" }
+function ec() { if [ -z "$DISPLAY" ]; then ect; else ecg; fi }
 function wb() { $BROWSER $* > /dev/null 2>&1 &! }
 function fm() { pcmanfm $* > /dev/null 2>&1 &! }
 function refe() {
