@@ -17,7 +17,7 @@ export LV='-c'
 export BC_ENV_ARGS="-l ${HOME}/.bc"
 
 if [ -n "$DISPLAY" ]; then
-  export BROWSER='google-chrome'
+  export BROWSER='firefox'
 else
   export BROWSER='links'
 fi
