@@ -13,6 +13,23 @@ fpath=($fpath ~/.zfunc)  # Where to look for autoloaded function definitions
 manpath=($manpath)
 typeset -U path cdpath fpath manpath  # automatically remove duplicates from these arrays
 
+
+# Autoloads
+autoload -U promptinit; promptinit
+autoload -U colors; colors
+autoload -Uz vcs_info
+autoload -U zcalc
+autoload -U zargs
+autoload -U url-quote-magic; zle -N self-insert url-quote-magic
+autoload -Uz add-zsh-hook
+# Autoload zsh modules when they are referenced
+zmodload -a zsh/zpty zpty
+zmodload -a zsh/zprof zprof
+zmodload -ap zsh/mapfile mapfile
+# stat(1) is now commonly an external command, so just load zstat
+zmodload -aF zsh/stat b:zstat
+
+
 # default prompt
 PROMPT=$'%B%(!.%F{red}.%F{green})%n@%m%f %F{magenta}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f
 %F{blue}%#%f%b '
@@ -20,7 +37,8 @@ PROMPT=$'%B%(!.%F{red}.%F{green})%n@%m%f %F{magenta}%$((COLUMNS - (${#USER} + 1 
 # prompt for right side of screen
 zstyle ':vcs_info:*' formats       '%F{yellow}(%f%s%F{yellow})-[%F{green}%b%F{yellow}]%f%u%c'
 zstyle ':vcs_info:*' actionformats '%F{yellow}(%f%s%F{yellow})-[%F{green}%b%F{yellow}|%F{red}%a%F{yellow}]%f%u%c'
-function precmd() { LANG=en_US.UTF-8 vcs_info }
+function precmd_vcs_info() { LANG=en_US.UTF-8 vcs_info }
+add-zsh-hook precmd precmd_vcs_info
 RPROMPT='${vcs_info_msg_0_}'
 
 # History
@@ -150,21 +168,6 @@ unsetopt global_export
 if [ $USER = "root" ]; then
     unsetopt clobber
 fi
-
-
-# Autoloads
-autoload -U promptinit; promptinit
-autoload -U colors; colors
-autoload -Uz vcs_info
-autoload -U zcalc
-autoload -U zargs
-autoload -U url-quote-magic; zle -N self-insert url-quote-magic
-# Autoload zsh modules when they are referenced
-zmodload -a zsh/zpty zpty
-zmodload -a zsh/zprof zprof
-zmodload -ap zsh/mapfile mapfile
-# stat(1) is now commonly an external command, so just load zstat
-zmodload -aF zsh/stat b:zstat
 
 
 # Completion
