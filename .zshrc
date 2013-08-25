@@ -208,3 +208,23 @@ compdef -d p4
 
 # Key Bindings
 bindkey -e                  # use emacs key bindings
+
+
+# Cooperate with the term+ mode of Emacs.
+if [[ -n "$INSIDE_EMACS" ]]; then
+  echo -ne "\e]51;host;$(hostname)\e\\" > /dev/tty
+  echo -ne "\e]51;user;$(id -run)\e\\" > /dev/tty
+
+  function precmd_emacs_term_cwd () {
+      echo -ne "\e]51;cd;$(pwd)\e\\" > /dev/tty
+  }
+  add-zsh-hook precmd precmd_emacs_term_cwd
+
+  function e() {
+    echo -ne "\e]51;open;${(j:;:)@}\e\\" > /dev/tty
+  }
+
+  function v() {
+    echo -ne "\e]51;view;${(j:;:)@}\e\\" > /dev/tty
+  }
+fi
