@@ -1,28 +1,22 @@
-################################################################
-#### Environment Variable
+# Environment Variable
 if [ -e ~/.zshenv ] ; then
     source ~/.zshenv
 fi
 
-# Command search path
+# Path
 path=(~/bin
       ~/.gem/ruby/1.8
       ~/.gem/ruby/1.9.1
       ~/.cabal/bin
       $path)
-
-# Where to look for autoloaded function definitions
-fpath=($fpath ~/.zfunc)
-
-# Man path
+fpath=($fpath ~/.zfunc)  # Where to look for autoloaded function definitions
 manpath=($manpath)
-
-# automatically remove duplicates from these arrays
-typeset -U path cdpath fpath manpath
+typeset -U path cdpath fpath manpath  # automatically remove duplicates from these arrays
 
 # default prompt
 PROMPT=$'%B%(!.%F{red}.%F{green})%n@%m%f %F{magenta}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f
 %F{blue}%#%f%b '
+
 # prompt for right side of screen
 zstyle ':vcs_info:*' formats       '%F{yellow}(%f%s%F{yellow})-[%F{green}%b%F{yellow}]%f%u%c'
 zstyle ':vcs_info:*' actionformats '%F{yellow}(%f%s%F{yellow})-[%F{green}%b%F{yellow}|%F{red}%a%F{yellow}]%f%u%c'
@@ -55,9 +49,7 @@ limit -s # Set limits of current shell to previously set limits of children.
 umask 022
 
 
-################################################################
-#### Alias
-# Set up aliases
+# Alias
 alias mv='nocorrect mv'       # no spelling correction
 alias cp='nocorrect cp'       # no spelling correction
 alias mkdir='nocorrect mkdir' # no spelling correction
@@ -81,17 +73,13 @@ alias ssh='nocorrect ssh'
 alias screen='screen -U'
 alias watch='noglob watch'
 alias jfbterm='LANG=ja_JP.UTF-8 jfbterm -q -f ~/.jfbterm.conf'
-#alias jfbterm='jfbterm -q -f ~/.jfbterm.conf'
-#alias startx='startx > /tmp/startx_${USER}.log 2>&1 &'
 alias startx='startx > /dev/null 2>&1 &'
 alias ds=dirsize.sh
 alias open='xdg-open'
 alias lpxdvi='pxdvi -geometry 1005x711 -paper a4r'
-#alias chrm='chromium --memory-model=low'
-#alias chrm='chromium --allow-outdated-plugins'
 
-# Global aliases -- These do not have to be
-# at the beginning of the command line.
+
+# Global aliases
 alias -g M='| more'
 alias -g L='| less'
 alias -g H='| head'
@@ -101,21 +89,17 @@ alias -g G='| grep'
 alias -g X='| xargs'
 
 
-################################################################
-#### Shell functions
+# Shell functions
 function ecg() { emacsclient --alternate-editor='' --create-frame "$@"&! }
 function ect() { emacsclient --alternate-editor='' --create-frame --tty "$@" }
 function ec() { if [ -z "$DISPLAY" ]; then ect "$@"; else ecg "$@"; fi }
 function wb() { $BROWSER $* > /dev/null 2>&1 &! }
 function fm() { pcmanfm $* > /dev/null 2>&1 &! }
-function refe() {
-  /usr/bin/refe $1 | iconv -f euc-jp -t utf-8 | less
-}
 function encrypt() {
   gpg -o ~/${1##*/}.gpg --cipher-algo AES256 --compress-level 0 -c $1
 }
 
-tm() {
+function tm() {
   if [ -n "$1" ]; then
     command tmux -u attach -t $1 || command tmux -u new -s $1
   else
@@ -123,7 +107,7 @@ tm() {
   fi
 }
 
-freload() { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
+function freload() { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
 
 # Autoload all shell functions from all directories in $fpath (following
 # symlinks) that have the executable bit on (the executable bit is not
@@ -131,32 +115,8 @@ freload() { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
 # particular shell function). $fpath should not be empty for this to work.
 for func in $^fpath/*(N-.x:t); autoload $func
 
-# Set the title and hardstatus of an XTerm or of GNU Screen
-# http://grml.org/zsh/zsh-lovers.html
-#function title {
-#      if [[ $TERM == "screen" ]]; then
-#        # Use these two for GNU Screen:
-#        print -nR $' 33k'$1$' 33'\
-#        print -nR $' 33]0;'$2$''
-#      elif [[ $TERM == "xterm" || $TERM == "rxvt" ]]; then
-#        # Use this one instead for XTerms:
-#        print -nR $' 33]0;'$*$''
-#      fi
-#}
-#function precmd { title zsh "$PWD" }
-#function preexec {
-#    emulate -L zsh
-#    local -a cmd; cmd=(${(z)1})
-#    title $cmd[1]:t "$cmd[2,-1]"
-#}
 
-
-################################################################
-#### Options
-
-# Other Options
-setopt print_eight_bit # show japanese filename correctly on completion
-
+# Options
 # History Options
 setopt hist_ignore_all_dups # Duplicate histories are ignored
 setopt hist_save_nodups # Don't save duplicate history
@@ -166,7 +126,8 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt hist_no_store # Don't store history commands
 unsetopt share_history
-
+# Other Options
+setopt print_eight_bit # show japanese filename correctly on completion
 setopt dvorak
 setopt ignore_eof # Ignore Ctrl-D and don't logout.
 setopt autocd autolist auto_pushd
@@ -191,16 +152,13 @@ if [ $USER = "root" ]; then
 fi
 
 
-################################################################
-#### Autoloads
-
+# Autoloads
 autoload -U promptinit; promptinit
 autoload -U colors; colors
 autoload -Uz vcs_info
 autoload -U zcalc
 autoload -U zargs
 autoload -U url-quote-magic; zle -N self-insert url-quote-magic
-
 # Autoload zsh modules when they are referenced
 zmodload -a zsh/zpty zpty
 zmodload -a zsh/zprof zprof
@@ -209,26 +167,19 @@ zmodload -ap zsh/mapfile mapfile
 zmodload -aF zsh/stat b:zstat
 
 
-################################################################
-#### Completion
-
+# Completion
 # Setup new style completion system. To see examples of the old style (compctl
 # based) programmable completion, check Misc/compctl-examples in the zsh
 # distribution.
 autoload -Uz compinit; compinit
-
 # Completion Styles
-
 # list of completers to use
 zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
-
 # allow one error for every three characters typed in approximate completer
 zstyle -e ':completion:*:approximate:*' max-errors \
     'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
-
 # insert all expansions for expand completer
 zstyle ':completion:*:expand:*' tag-order all-expansions
-
 # formatting and messages
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*:descriptions' format '%B%d%b'
@@ -236,43 +187,21 @@ zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
-
 # match uppercase from lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
 # offer indexes before parameters in subscripts
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
-
 # command for process lists, the local web server details and host completion
 zstyle ':completion:*:processes' command 'ps -o pid,s,nice,stime,args'
-
 # Filename suffixes to ignore during completion (except after rm command)
 zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns \
     '*?.o' '*?.c~' '*?.cpp~' \
     '*?.old' '*?.pro'
-
 # ignore completion functions (until the _ignored completer)
 zstyle ':completion:*:functions' ignored-patterns '_*'
-
 # Disable completion for some commands.
 compdef -d p4
 
 
-################################################################
-#### Key Bindings
-
+# Key Bindings
 bindkey -e                  # use emacs key bindings
-#bindkey -v                  # use vi key bindings
-#bindkey -v '' vi-backward-char
-#bindkey -v '' vi-forward-char
-#bindkey -v '' vi-beginning-of-line
-#bindkey -v '' vi-end-of-line
-#bindkey -v '' vi-kill-eol
-#bindkey -v '' kill-whole-line
-#bindkey -v '' history-incremental-search-backward
-#bindkey -v '' history-incremental-search-forward
-#bindkey -a 'q' push-line
-#bindkey -v '' push-line
-#bindkey -v 'q' push-line
-#bindkey -v 'Q' push-line
-#bindkey -v -r '/'
