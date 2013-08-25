@@ -24,8 +24,8 @@ function precmd() { LANG=en_US.UTF-8 vcs_info }
 RPROMPT='${vcs_info_msg_0_}'
 
 # History
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=1000000
+SAVEHIST=1000000
 HISTFILE=~/.zsh_history
 
 # other variables
