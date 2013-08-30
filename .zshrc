@@ -230,4 +230,8 @@ if [[ -n "$INSIDE_EMACS" ]]; then
   function v() {
     echo -ne "\e]51;view;${(j:;:)@}\e\\" > /dev/tty
   }
+
+  function t() {
+    echo -ne "\e]51;open-elscreen;${(j:;:)@}\e\\" > /dev/tty
+  }
 fi
