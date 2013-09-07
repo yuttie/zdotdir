@@ -117,7 +117,7 @@ function ec-killall() { for s in `ec-ls`; do echo "Kill session '$s'"; ec-kill $
 function wb() { $BROWSER $* > /dev/null 2>&1 &! }
 function fm() { pcmanfm $* > /dev/null 2>&1 &! }
 function encrypt() {
-  gpg -o ~/${1##*/}.gpg --cipher-algo AES256 --compress-level 0 -c $1
+  gpg --output ~/${1##*/}.gpg --cipher-algo AES256 -z 0 --symmetric $1
 }
 
 function tm() {
