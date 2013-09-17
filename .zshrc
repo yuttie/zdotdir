@@ -95,6 +95,8 @@ alias startx='startx > /dev/null 2>&1 &'
 alias ds=dirsize.sh
 alias open='xdg-open'
 alias lpxdvi='pxdvi -geometry 1005x711 -paper a4r'
+alias ecg='emacsclient --alternate-editor='' --create-frame --no-wait'
+alias ect='emacsclient --alternate-editor='' --create-frame --tty'
 
 
 # Global aliases
@@ -108,8 +110,6 @@ alias -g X='| xargs'
 
 
 # Shell functions
-function ecg() { emacsclient --alternate-editor='' --create-frame --no-wait "$@" }
-function ect() { emacsclient --alternate-editor='' --create-frame --tty "$@" }
 function ec() { if [ -z "$DISPLAY" ]; then ect "$@"; else ecg "$@"; fi }
 function ec-ls() { ls --color=never /tmp/emacs$(id -ur) }
 function ec-kill() { emacsclient --socket-name="${1:-server}" --eval "(save-buffers-kill-emacs)" }
