@@ -95,7 +95,7 @@ alias startx='startx > /dev/null 2>&1 &'
 alias ds=dirsize.sh
 alias open='xdg-open'
 alias lpxdvi='pxdvi -geometry 1005x711 -paper a4r'
-alias ecg='emacsclient --alternate-editor='' --create-frame --no-wait'
+alias ecg='emacsclient --alternate-editor='' --create-frame --display=${DISPLAY:-:0} --no-wait'
 alias ect='emacsclient --alternate-editor='' --create-frame --tty'
 
 
