@@ -115,7 +115,7 @@ alias -g X='| xargs'
 # Shell functions
 function ec() { if [ -z "$DISPLAY" ]; then ect "$@"; else ecg "$@"; fi }
 function ec-ls() { ls --color=never /tmp/emacs$(id -ur) }
-function ec-kill() { emacsclient --socket-name="${1:-server}" --eval "(save-buffers-kill-emacs)" }
+function ec-kill() { emacsclient --socket-name="${1:-server}" --eval "(kill-emacs)" }
 function ec-killall() { for s in `ec-ls`; do echo "Kill session '$s'"; ec-kill $s; done }
 function wb() { $BROWSER $* > /dev/null 2>&1 &! }
 function fm() { pcmanfm $* > /dev/null 2>&1 &! }
