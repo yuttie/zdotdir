@@ -16,6 +16,8 @@ export LV='-c'
 
 export BC_ENV_ARGS="-l ${HOME}/.bc"
 
+export PYTHONSTARTUP=~/.pythonstartup
+
 if [ -n "$DISPLAY" ]; then
   export BROWSER='firefox'
 else
