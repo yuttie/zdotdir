@@ -92,9 +92,9 @@ alias screen='screen -U'
 alias watch='noglob watch'
 alias jfbterm='LANG=ja_JP.UTF-8 jfbterm -q -f ~/.jfbterm.conf'
 alias startx='startx > /dev/null 2>&1 &'
-alias ds=dirsize.sh
 alias open='xdg-open'
 alias lpxdvi='pxdvi -geometry 1005x711 -paper a4r'
+alias ds='du -BM --max-depth=1 | sort -n'
 # Emacs
 alias eg='emacs --display=${DISPLAY:-:0}'
 alias et='emacs --no-window-system'
