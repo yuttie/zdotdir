@@ -50,11 +50,11 @@ HISTFILE=~/.zsh_history
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # 256-colorization by correcting TERM variable
-if [[ "$TERM" == "xterm" ]]; then
+if [[ "$TERM" == "xterm" && -e /usr/share/terminfo/x/xterm-256color ]]; then
     TERM="xterm-256color"
-elif [[ "$TERM" == "screen" ]]; then
+elif [[ "$TERM" == "screen" && -e /usr/share/terminfo/s/screen-256color ]]; then
     TERM="screen-256color"
-elif [[ "$TERM" == "screen-bce" ]]; then
+elif [[ "$TERM" == "screen-bce" && -e /usr/share/terminfo/s/screen-256color-bce ]]; then
     TERM="screen-256color-bce"
 fi
 
