@@ -50,11 +50,11 @@ HISTFILE=~/.zsh_history
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # 256-colorization by correcting TERM variable
-if [ "$TERM" = "xterm" ]; then
+if [[ "$TERM" == "xterm" ]]; then
     TERM="xterm-256color"
-elif [ "$TERM" = "screen" ]; then
+elif [[ "$TERM" == "screen" ]]; then
     TERM="screen-256color"
-elif [ "$TERM" = "screen-bce" ]; then
+elif [[ "$TERM" == "screen-bce" ]]; then
     TERM="screen-256color-bce"
 fi
 
@@ -172,7 +172,7 @@ setopt magic_equal_subst
 unsetopt beep
 unsetopt bgnice
 unsetopt global_export
-if [ $USER = "root" ]; then
+if [[ $USER == "root" ]]; then
     unsetopt clobber
 fi
 
