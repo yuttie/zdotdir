@@ -18,6 +18,8 @@ export BC_ENV_ARGS="-l ${HOME}/.bc"
 
 export PYTHONSTARTUP=~/.pythonstartup
 
+export GPG_TTY=`tty`
+
 if [ -n "$DISPLAY" ]; then
   export BROWSER='firefox'
 else
