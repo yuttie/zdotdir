@@ -87,7 +87,6 @@ alias lsh='ls -d .*'
 alias rmbak='rm ~/**/*~'
 alias pkill='pkill -e'
 alias waf='python waf'
-alias elc='emacs --quick -batch --funcall batch-byte-compile'
 alias eix='nocorrect eix'
 alias ssh='nocorrect ssh'
 alias screen='screen -U'
@@ -98,10 +97,17 @@ alias open='xdg-open'
 alias lpxdvi='pxdvi -geometry 1005x711 -paper a4r'
 alias ds='du -BM --max-depth=1 | sort -n'
 # Emacs
+alias elc='emacs --quick -batch --funcall batch-byte-compile'
 alias eg='emacs --display=${DISPLAY:-:0}'
 alias et='emacs --no-window-system'
 alias ecg='emacsclient --alternate-editor='' --create-frame --display=${DISPLAY:-:0} --no-wait'
 alias ect='emacsclient --alternate-editor='' --create-frame --tty'
+# Mac OS X
+if [[ `uname` == 'Darwin' ]]; then
+  alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+  unalias ls
+  unalias open
+fi
 
 
 # Global aliases
