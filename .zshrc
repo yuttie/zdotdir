@@ -5,8 +5,9 @@ fi
 
 # Path
 path=(~/bin
-      ~/.gem/ruby/1.9.1/bin
+      ~/.gem/ruby/2.1.0/bin
       ~/.gem/ruby/2.0.0/bin
+      ~/.gem/ruby/1.9.1/bin
       ~/.cabal/bin
       $path)
 fpath=($fpath ~/.zfunc)  # Where to look for autoloaded function definitions
