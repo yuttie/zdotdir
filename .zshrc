@@ -32,7 +32,15 @@ zmodload -aF zsh/stat b:zstat
 
 
 # default prompt
-PROMPT=$'%B%(!.%F{red}.%F{green})%n@%m%f %F{magenta}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f
+case $HOST in
+  home)
+    host_color="green"
+    ;;
+  ocean)
+    host_color="blue"
+    ;;
+esac
+PROMPT=$'%B%(!.%F{red}root.%F{$host_color}%n)@%m%f %F{magenta}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f
 %F{blue}%#%f%b '
 
 # prompt for right side of screen
