@@ -39,6 +39,9 @@ case $HOST in
   ocean)
     host_color="blue"
     ;;
+  lab)
+    host_color="yellow"
+    ;;
 esac
 PROMPT=$'%B%(!.%F{red}root.%F{$host_color}%n)@%m%f %F{magenta}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f
 %F{blue}%#%f%b '
