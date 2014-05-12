@@ -39,6 +39,9 @@ case $HOST in
   ocean)
     host_color="blue"
     ;;
+  sky.local)
+    host_color="cyan"
+    ;;
   lab)
     host_color="yellow"
     ;;
