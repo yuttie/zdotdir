@@ -260,3 +260,6 @@ if [[ -n "$INSIDE_EMACS" ]]; then
     echo -ne "\e]51;open-elscreen;${(j:;:)@}\e\\" > /dev/tty
   }
 fi
+
+# OPAM configuration
+. ~/.opam/opam-init/init.zsh >/dev/null 2>/dev/null || true
