@@ -26,6 +26,10 @@ else
   export BROWSER='links'
 fi
 
+if [[ `uname` == 'Darwin' ]]; then
+  export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$(find /usr/local/Cellar -name 'pkgconfig' -type d | sed -n -e '1h; 1!H; ${ x; s/\n/:/g; p; }')
+fi
+
 ## freetype-infinality
 export INFINALITY_FT_FILTER_PARAMS="11 33 44 33 11"
 export INFINALITY_FT_GRAYSCALE_FILTER_STRENGTH=0
