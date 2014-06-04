@@ -10,6 +10,10 @@ path=(~/bin
       ~/.gem/ruby/1.9.1/bin
       ~/.cabal/bin
       $path)
+if [[ `uname` == 'Darwin' ]]; then
+  path=(/usr/local/opt/ruby/bin
+        $path)
+fi
 fpath=($fpath ~/.zfunc)  # Where to look for autoloaded function definitions
 manpath=($manpath)
 typeset -U path cdpath fpath manpath  # automatically remove duplicates from these arrays
