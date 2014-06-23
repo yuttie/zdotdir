@@ -123,6 +123,8 @@ alias ect='emacsclient --alternate-editor='' --create-frame --tty'
 # Mac OS X
 if [[ `uname` == 'Darwin' ]]; then
   alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+  alias eg=emacs
+  alias ecg='emacsclient --alternate-editor='' --create-frame --no-wait'
   alias rsync='rsync --iconv=UTF8-MAC,UTF8'
   unalias ls
   unalias open
