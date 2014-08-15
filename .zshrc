@@ -13,6 +13,11 @@ path=(~/bin
 if [[ `uname` == 'Darwin' ]]; then
   path=(/usr/local/opt/ruby/bin
         $path)
+  # Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
+  export GHC_DOT_APP="/Applications/ghc-7.8.3.app"
+  if [ -d "$GHC_DOT_APP" ]; then
+    path=("${GHC_DOT_APP}/Contents/bin" $path)
+  fi
 fi
 fpath=($fpath ~/.zfunc)  # Where to look for autoloaded function definitions
 manpath=($manpath)
