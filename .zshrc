@@ -55,7 +55,7 @@ case $HOST in
     host_color="yellow"
     ;;
 esac
-PROMPT=$'%B%(!.%F{red}root.%F{$host_color}%n)@%m%f %F{magenta}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f
+PROMPT=$'%B%(!.%F{red}root.%F{$host_color}%n)@%m%f %F{magenta}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f %F{black}[%D{%Y-%m-%d %H:%M:%S}]%f
 %F{blue}%#%f%b '
 
 # prompt for right side of screen
@@ -274,3 +274,8 @@ fi
 
 # OPAM configuration
 . ~/.opam/opam-init/init.zsh >/dev/null 2>/dev/null || true
+
+# Refres the prompt before executing a command line
+function refresh_prompt_and_accept_line() { zle reset-prompt; zle accept-line; }
+zle -N refresh_prompt_and_accept_line
+bindkey "\C-m" refresh_prompt_and_accept_line
