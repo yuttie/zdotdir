@@ -275,7 +275,7 @@ fi
 # OPAM configuration
 . ~/.opam/opam-init/init.zsh >/dev/null 2>/dev/null || true
 
-# Refres the prompt before executing a command line
+# Refresh the prompt before executing a command line
 function refresh_prompt_and_accept_line() { zle reset-prompt; zle accept-line; }
 zle -N refresh_prompt_and_accept_line
 bindkey "\C-m" refresh_prompt_and_accept_line
