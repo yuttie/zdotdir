@@ -32,7 +32,7 @@ fi
 
 ## freetype-infinality
 ## /usr/share/doc/eselect-lcdfilter-1/infinality-settings.sh.bz2
-export INFINALITY_FT_FILTER_PARAMS="11 33 44 33 11"
+export INFINALITY_FT_FILTER_PARAMS="33 44 44 44 33"
 export INFINALITY_FT_GRAYSCALE_FILTER_STRENGTH=0
 export INFINALITY_FT_USE_VARIOUS_TWEAKS=false
 export INFINALITY_FT_AUTOHINT_INCREASE_GLYPH_HEIGHTS=true
