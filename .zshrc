@@ -280,3 +280,9 @@ fi
 function refresh_prompt_and_accept_line() { zle reset-prompt; zle accept-line; }
 zle -N refresh_prompt_and_accept_line
 bindkey "\C-m" refresh_prompt_and_accept_line
+
+# zsh-notify
+# https://github.com/marzocchi/zsh-notify
+# https://github.com/yuttie/zsh-notify
+export NOTIFY_COMMAND_COMPLETE_TIMEOUT=1
+source ~/.zsh.d/zsh-notify/notify.plugin.zsh
