@@ -120,6 +120,7 @@ alias startx='startx > /dev/null 2>&1 &'
 alias open='xdg-open'
 alias lpxdvi='pxdvi -geometry 1005x711 -paper a4r'
 alias ds='du -m -d1 | sort -n'
+alias bat='upower -e | fgrep -F BAT | xargs -n 1 upower -i'
 # Emacs
 alias elc='emacs --quick -batch --funcall batch-byte-compile'
 alias eg='emacs --display=${DISPLAY:-:0}'
