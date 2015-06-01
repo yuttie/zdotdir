@@ -145,6 +145,7 @@ alias -g T='| tail'
 alias -g S='| sort'
 alias -g G='| grep'
 alias -g X='| xargs'
+alias -g C='| DISPLAY=:0 xclip -selection clipboard'
 
 
 # Shell functions
