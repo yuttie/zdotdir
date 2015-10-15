@@ -288,3 +288,21 @@ bindkey "\C-m" refresh_prompt_and_accept_line
 # https://github.com/yuttie/zsh-notify
 export NOTIFY_COMMAND_COMPLETE_TIMEOUT=1
 source ~/.zsh.d/zsh-notify/notify.plugin.zsh
+
+# peco
+# https://gist.github.com/jimeh/7d94f1000cfc9cba2893
+if which peco &> /dev/null; then
+  function peco_select_history() {
+    local tac
+    { which gtac &> /dev/null && tac="gtac" } || \
+      { which tac &> /dev/null && tac="tac" } || \
+      tac="tail -r"
+    BUFFER=$(fc -l -n 1 | eval $tac | \
+                peco --layout=bottom-up --query "$LBUFFER")
+    CURSOR=$#BUFFER # move cursor
+    zle -R -c       # refresh
+  }
+
+  zle -N peco_select_history
+  bindkey '^R' peco_select_history
+fi
