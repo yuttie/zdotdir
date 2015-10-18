@@ -235,6 +235,10 @@ fi
 # distribution.
 autoload -Uz compinit; compinit
 # Completion Styles
+# colorize
+if [ -n "$LS_COLORS" ]; then
+  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+fi
 # list of completers to use
 zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
 # allow one error for every three characters typed in approximate completer
