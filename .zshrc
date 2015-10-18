@@ -4,21 +4,25 @@ if [ -e ~/.zshenv ] ; then
 fi
 
 # Path
-path=(~/bin
-      ~/.gem/ruby/2.1.0/bin
-      ~/.gem/ruby/2.0.0/bin
-      ~/.gem/ruby/1.9.1/bin
-      ~/.cabal/bin
-      $path)
-if [[ `uname` == 'Darwin' ]]; then
-  path=(/usr/local/opt/ruby/bin
-        $path)
-  # Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
-  export GHC_DOT_APP="/Applications/ghc-7.8.3.app"
-  if [ -d "$GHC_DOT_APP" ]; then
-    path=("${GHC_DOT_APP}/Contents/bin" $path)
-  fi
-fi
+case "$OSTYPE" in
+  darwin*)
+    path=(/usr/local/opt/ruby/bin
+          $path)
+    # Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
+    export GHC_DOT_APP="/Applications/ghc-7.8.3.app"
+    if [ -d "$GHC_DOT_APP" ]; then
+      path=("${GHC_DOT_APP}/Contents/bin" $path)
+    fi
+    ;;
+  *)
+    path=(~/bin
+          ~/.gem/ruby/2.1.0/bin
+          ~/.gem/ruby/2.0.0/bin
+          ~/.gem/ruby/1.9.1/bin
+          ~/.cabal/bin
+          $path)
+    ;;
+esac
 fpath=($fpath ~/.zfunc)  # Where to look for autoloaded function definitions
 manpath=($manpath)
 typeset -U path cdpath fpath manpath  # automatically remove duplicates from these arrays
@@ -145,13 +149,15 @@ alias et='emacs --no-window-system'
 alias ecg='emacsclient --alternate-editor='' --create-frame --display=${DISPLAY:-:0} --no-wait'
 alias ect='emacsclient --alternate-editor='' --create-frame --tty'
 # Mac OS X
-if [[ `uname` == 'Darwin' ]]; then
-  alias eg='open -a /Applications/Emacs.app'
-  alias ecg='emacsclient --alternate-editor='' --create-frame --no-wait'
-  alias rsync='rsync --iconv=UTF8-MAC,UTF8'
-  unalias ls
-  unalias open
-fi
+case "$OSTYPE" in
+  darwin*)
+    alias eg='open -a /Applications/Emacs.app'
+    alias ecg='emacsclient --alternate-editor='' --create-frame --no-wait'
+    alias rsync='rsync --iconv=UTF8-MAC,UTF8'
+    unalias ls
+    unalias open
+    ;;
+esac
 
 
 # Global aliases
