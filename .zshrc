@@ -73,6 +73,20 @@ HISTFILE=~/.zsh_history
 # other variables
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
+# Fix $TERM if a terminfo for the terminal is not available
+if ! infocmp "$TERM" >/dev/null; then
+  if [ "$TERM" = "rxvt-unicode-256color" ]; then
+    if infocmp "rxvt-256color" >/dev/null; then
+      TERM="rxvt-256color"
+    fi
+  fi
+  if [ "$TERM" = "tmux-256color" ]; then
+    if infocmp "screen-256color" >/dev/null; then
+      TERM="screen-256color"
+    fi
+  fi
+fi
+
 # Force 256-colorization by correcting TERM variable
 if [[ "$TERM" == "xterm" && -e /usr/share/terminfo/x/xterm-256color ]]; then
     TERM="xterm-256color"
