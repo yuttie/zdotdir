@@ -59,8 +59,8 @@ PROMPT=$'%B%(!.%F{red}root.%F{$host_color}%n)@%m%f %F{magenta}%$((COLUMNS - (${#
 %F{blue}%#%f%b '
 
 # prompt for right side of screen
-zstyle ':vcs_info:*' formats       '%F{yellow}(%f%s%F{yellow})-[%F{green}%b%F{yellow}]%f%u%c'
-zstyle ':vcs_info:*' actionformats '%F{yellow}(%f%s%F{yellow})-[%F{green}%b%F{yellow}|%F{red}%a%F{yellow}]%f%u%c'
+zstyle ':vcs_info:*' formats       '%s:%F{green}%b%f%u%c'
+zstyle ':vcs_info:*' actionformats '%s:%F{green}%b%f%F{red}>%a%f%u%c'
 function precmd_vcs_info() { LANG=en_US.UTF-8 vcs_info }
 add-zsh-hook precmd precmd_vcs_info
 RPROMPT='${vcs_info_msg_0_}'
