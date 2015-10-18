@@ -73,7 +73,7 @@ HISTFILE=~/.zsh_history
 # other variables
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-# 256-colorization by correcting TERM variable
+# Force 256-colorization by correcting TERM variable
 if [[ "$TERM" == "xterm" && -e /usr/share/terminfo/x/xterm-256color ]]; then
     TERM="xterm-256color"
 elif [[ "$TERM" == "screen" && -e /usr/share/terminfo/s/screen-256color ]]; then
