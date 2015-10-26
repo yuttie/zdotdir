@@ -182,6 +182,19 @@ function encrypt() {
   gpg --output ~/${1##*/}.gpg --cipher-algo AES256 -z 0 --symmetric $1
 }
 
+function callmeat() {
+  local time message title
+  time="$1"
+  shift
+  message="$@"
+  if [ -z "$message" ]; then
+    title="$time"
+  else
+    title="$time - $message"
+  fi
+  echo "notify-send --icon appointment-soon --expire-time=0 --urgency=critical '$title'" | at "$time"
+}
+
 function tm() {
   if [ -n "$1" ]; then
     command tmux -u attach -t $1 || command tmux -u new -s $1
