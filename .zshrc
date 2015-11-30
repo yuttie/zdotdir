@@ -36,6 +36,16 @@ autoload -U zcalc
 autoload -U zargs
 autoload -U url-quote-magic; zle -N self-insert url-quote-magic
 autoload -Uz add-zsh-hook
+# run-help
+unalias run-help
+autoload -Uz run-help
+autoload -Uz run-help-git
+autoload -Uz run-help-openssl
+autoload -Uz run-help-p4
+autoload -Uz run-help-sudo
+autoload -Uz run-help-svk
+autoload -Uz run-help-svn
+HELPDIR=/usr/share/zsh/5.0.5/help
 # Autoload zsh modules when they are referenced
 zmodload -a zsh/zpty zpty
 zmodload -a zsh/zprof zprof
