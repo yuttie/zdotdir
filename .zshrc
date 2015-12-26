@@ -65,6 +65,9 @@ case $HOST in
   sky.local)
     host_color="cyan"
     ;;
+  starfield)
+    host_color="yellow"
+    ;;
   lab)
     host_color="yellow"
     ;;
