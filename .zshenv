@@ -10,9 +10,6 @@ export EDITOR='vim'
 export DICTIONARY=en_US
 
 export LESS='--RAW-CONTROL-CHARS --ignore-case'
-export JLESS='-R --ignore-case'
-export JLESSCHARSET='ja'
-export LV='-c'
 
 export BC_ENV_ARGS="-l ${HOME}/.bc"
 
