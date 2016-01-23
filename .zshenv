@@ -9,7 +9,7 @@ export LANG='en_US.UTF-8'
 export EDITOR='vim'
 export DICTIONARY=en_US
 
-export LESS='-R --ignore-case'
+export LESS='--RAW-CONTROL-CHARS --ignore-case'
 export JLESS='-R --ignore-case'
 export JLESSCHARSET='ja'
 export LV='-c'
