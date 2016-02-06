@@ -361,6 +361,10 @@ function refresh_prompt_and_accept_line() { zle reset-prompt; zle accept-line; }
 zle -N refresh_prompt_and_accept_line
 bindkey "\C-m" refresh_prompt_and_accept_line
 
+# Show exit codes of commands
+function show_last_exit_code() { echo "$fg_bold[black]$?$reset_color"; }
+add-zsh-hook precmd show_last_exit_code
+
 # zsh-notify
 # https://github.com/marzocchi/zsh-notify
 # https://github.com/yuttie/zsh-notify
