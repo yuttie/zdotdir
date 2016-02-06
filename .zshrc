@@ -172,7 +172,13 @@ alias open='xdg-open'
 alias lpxdvi='pxdvi -geometry 1005x711 -paper a4r'
 alias ds='du -m -d1 | sort -n'
 alias bat='upower -e | fgrep -F BAT | xargs -n 1 upower -i'
-function nvim() { NVIM_TUI_ENABLE_TRUE_COLOR=1 evilvte -e nvim "$@"&! }
+alias nvim='NVIM_TUI_ENABLE_TRUE_COLOR=1 NVIM_TUI_ENABLE_CURSOR_SHAPE=1 nvim'
+function Nvim() {
+  env --unset TMUX \
+      NVIM_TUI_ENABLE_TRUE_COLOR=1 \
+      NVIM_TUI_ENABLE_CURSOR_SHAPE=1 \
+      sakura -e nvim "$@"&!
+}
 # Emacs
 alias elc='emacs --quick -batch --funcall batch-byte-compile'
 alias eg='emacs --display=${DISPLAY:-:0}'
