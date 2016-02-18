@@ -33,6 +33,7 @@ case "$OSTYPE" in
     ;;
   *)
     path=(~/bin
+          ~/.local/bin
           ~/.gem/ruby/?.?.?/bin
           ~/.cabal/bin
           $path)
