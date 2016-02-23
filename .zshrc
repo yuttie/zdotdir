@@ -290,6 +290,9 @@ fi
 # based) programmable completion, check Misc/compctl-examples in the zsh
 # distribution.
 autoload -Uz compinit; compinit
+autoload -Uz bashcompinit; bashcompinit
+eval "$(stack --bash-completion-script stack)"
+source ~/.local/bin/aws_zsh_completer.sh
 # Completion Styles
 # colorize
 if [ -n "$LS_COLORS" ]; then
