@@ -180,7 +180,7 @@ function Nvim() {
 }
 # Emacs
 alias elc='emacs --quick -batch --funcall batch-byte-compile'
-alias eg='emacs --display=${DISPLAY:-:0}'
+function eg() { emacs --display=${DISPLAY:-:0} "$@"&! }
 alias et='emacs --no-window-system'
 alias ecg='emacsclient --alternate-editor='' --create-frame --display=${DISPLAY:-:0} --no-wait'
 alias ect='emacsclient --alternate-editor='' --create-frame --tty'
