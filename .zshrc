@@ -302,6 +302,8 @@ if [ -n "$LS_COLORS" ]; then
 fi
 # list of completers to use
 zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
+# Paths to search for a command when sudoing
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 # allow one error for every three characters typed in approximate completer
 zstyle -e ':completion:*:approximate:*' max-errors \
     'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
