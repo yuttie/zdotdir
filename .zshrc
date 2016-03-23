@@ -91,7 +91,7 @@ case $HOST in
     ;;
 esac
 PROMPT=$'%B%(!.%F{red}root.%F{$host_color}%n)@%m%f %F{magenta}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f %F{black}[%D{%Y-%m-%d %H:%M:%S}]%f
-%F{blue}%#%f%b '
+%F{blue}❱%f%b '
 
 # prompt for right side of screen
 zstyle ':vcs_info:git:*' check-for-changes true
