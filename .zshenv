@@ -9,7 +9,7 @@ export LANG='en_US.UTF-8'
 export EDITOR='nvim'
 export DICTIONARY=en_US
 
-export LESS='--RAW-CONTROL-CHARS --ignore-case'
+export LESS='--RAW-CONTROL-CHARS --ignore-case --chop-long-lines'
 
 # Colored man pages
 export GROFF_NO_SGR=1
