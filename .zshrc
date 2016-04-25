@@ -178,7 +178,7 @@ function Nvim() {
   env --unset TMUX \
       NVIM_TUI_ENABLE_TRUE_COLOR=1 \
       NVIM_TUI_ENABLE_CURSOR_SHAPE=1 \
-      sakura -e nvim "$@"&!
+      ~/dotfiles/launch-st -e nvim "$@"&!
 }
 # Emacs
 alias elc='emacs --quick -batch --funcall batch-byte-compile'
