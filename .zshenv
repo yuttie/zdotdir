@@ -6,7 +6,7 @@
 # output or assume the shell is attached to a tty.
 
 export LANG='en_US.UTF-8'
-export EDITOR='vim'
+export EDITOR='nvim'
 export DICTIONARY=en_US
 
 export LESS='--RAW-CONTROL-CHARS --ignore-case'
