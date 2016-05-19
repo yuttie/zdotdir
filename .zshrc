@@ -26,22 +26,25 @@ fi
 # Path
 case "$OSTYPE" in
   darwin*)
-    path=(/usr/local/opt/ruby/bin
-          $path)
+    additional_path=(/usr/local/opt/ruby/bin)
     # Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
     export GHC_DOT_APP="/Applications/ghc-7.8.3.app"
     if [ -d "$GHC_DOT_APP" ]; then
-      path=("${GHC_DOT_APP}/Contents/bin" $path)
+      additional_path=("${GHC_DOT_APP}/Contents/bin" $additional_path)
     fi
     ;;
   *)
-    path=(~/bin
-          ~/.local/bin
-          ~/.gem/ruby/?.?.?/bin
-          ~/.cabal/bin
-          $path)
+    additional_path=(~/bin
+                     ~/.local/bin
+                     ~/.gem/ruby/?.?.?/bin
+                     ~/.cabal/bin
+                     ~/.cargo/bin)
     ;;
 esac
+for (( i=${#additional_path[@]}; i>0; i-- )); do
+  d=${additional_path[i]}
+  [[ -d $d ]] && path=($d $path)
+done
 fpath=($fpath ~/.zfunc)  # Where to look for autoloaded function definitions
 manpath=($manpath)
 typeset -U path cdpath fpath manpath  # automatically remove duplicates from these arrays
