@@ -18,6 +18,11 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
 
+# Load host-specific configurations
+if [ -e ~/.host.zsh ] ; then
+    source ~/.host.zsh
+fi
+
 # Environment Variable
 if [ -e ~/.zshenv ] ; then
     source ~/.zshenv
@@ -77,23 +82,6 @@ zmodload -aF zsh/stat b:zstat
 
 
 # default prompt
-case $HOST in
-  home)
-    host_color="green"
-    ;;
-  ocean)
-    host_color="blue"
-    ;;
-  sky.local)
-    host_color="cyan"
-    ;;
-  starfield)
-    host_color="yellow"
-    ;;
-  lab)
-    host_color="yellow"
-    ;;
-esac
 PROMPT=$'%B%(!.%F{red}root.%F{$host_color}%n)@%m%f %F{magenta}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f %F{black}[%D{%Y-%m-%d %H:%M:%S}]%f
 %F{blue}❱%f%b '
 
