@@ -175,6 +175,11 @@ function Nvim() {
 # Emacs
 alias elc='emacs --quick -batch --funcall batch-byte-compile'
 function eg() { emacs --display=${DISPLAY:-:0} "$@"&! }
+function egt() {
+  env --unset TMUX \
+      KONSOLE_DBUS_SESSION=1 \
+      ~/dotfiles/launch-st -e emacs --no-window-system "$@"&!
+}
 alias et='emacs --no-window-system'
 alias ecg='emacsclient --alternate-editor='' --create-frame --display=${DISPLAY:-:0} --no-wait'
 alias ect='emacsclient --alternate-editor='' --create-frame --tty'
