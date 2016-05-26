@@ -204,6 +204,7 @@ alias -g S='| sort'
 alias -g G='| grep'
 alias -g X='| xargs'
 alias -g C='| DISPLAY=:0 xclip -selection clipboard'
+alias -g F='| fzf'
 
 
 # Shell functions
