@@ -232,14 +232,6 @@ function call_me_later() {
 }
 alias cml=call_me_later
 
-function tm() {
-  if [ -n "$1" ]; then
-    command tmux -u attach -t $1 || command tmux -u new -s $1
-  else
-    command tmux -u
-  fi
-}
-
 function freload() { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
 
 # Autoload all shell functions from all directories in $fpath (following
