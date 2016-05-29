@@ -65,3 +65,6 @@ for (( i=${#additional_path[@]}; i>0; i-- )); do
   d=${additional_path[i]}
   [[ -d $d ]] && path=($d $path)
 done
+
+manpath=($manpath)
+export MANPATH
