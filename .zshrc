@@ -23,11 +23,6 @@ if [ -e ~/.host.zsh ] ; then
     source ~/.host.zsh
 fi
 
-# Environment Variable
-if [ -e ~/.zshenv ] ; then
-    source ~/.zshenv
-fi
-
 # Path
 case "$OSTYPE" in
   darwin*)
