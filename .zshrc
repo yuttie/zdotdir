@@ -23,105 +23,6 @@ if [ -e ~/.host.zsh ] ; then
     source ~/.host.zsh
 fi
 
-# Path
-case "$OSTYPE" in
-  darwin*)
-    additional_path=(/usr/local/opt/ruby/bin)
-    # Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
-    export GHC_DOT_APP="/Applications/ghc-7.8.3.app"
-    if [ -d "$GHC_DOT_APP" ]; then
-      additional_path=("${GHC_DOT_APP}/Contents/bin" $additional_path)
-    fi
-    ;;
-  *)
-    additional_path=(~/bin
-                     ~/.local/bin
-                     ~/.gem/ruby/?.?.?/bin
-                     ~/.cabal/bin
-                     ~/.cargo/bin)
-    ;;
-esac
-for (( i=${#additional_path[@]}; i>0; i-- )); do
-  d=${additional_path[i]}
-  [[ -d $d ]] && path=($d $path)
-done
-fpath=($fpath ~/.zfunc)  # Where to look for autoloaded function definitions
-manpath=($manpath)
-typeset -U path cdpath fpath manpath  # automatically remove duplicates from these arrays
-
-
-# Autoloads
-autoload -U promptinit; promptinit
-autoload -U colors; colors
-autoload -Uz vcs_info
-autoload -U zcalc
-autoload -U zargs
-autoload -U url-quote-magic; zle -N self-insert url-quote-magic
-autoload -Uz add-zsh-hook
-# run-help
-unalias run-help
-autoload -Uz run-help
-autoload -Uz run-help-git
-autoload -Uz run-help-openssl
-autoload -Uz run-help-p4
-autoload -Uz run-help-sudo
-autoload -Uz run-help-svk
-autoload -Uz run-help-svn
-HELPDIR=/usr/share/zsh/5.0.5/help
-# Autoload zsh modules when they are referenced
-zmodload -a zsh/zpty zpty
-zmodload -a zsh/zprof zprof
-zmodload -ap zsh/mapfile mapfile
-# stat(1) is now commonly an external command, so just load zstat
-zmodload -aF zsh/stat b:zstat
-
-
-# default prompt
-PROMPT=$'%B%(!.%F{red}root.%F{$host_color}%n)@%m%f %F{magenta}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f %F{black}[%D{%Y-%m-%d %H:%M:%S}]%f
-%F{blue}❱%f%b '
-
-# prompt for right side of screen
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr   '%F{yellow}+%f'
-zstyle ':vcs_info:git:*' unstagedstr '%F{red}!%f'
-zstyle ':vcs_info:*' formats       '%B%s:%F{green}%b%f%c%u'
-zstyle ':vcs_info:*' actionformats '%B%s:%F{green}%b%f%F{red}>%a%f%c%u'
-function precmd_vcs_info() { LANG=en_US.UTF-8 vcs_info }
-add-zsh-hook precmd precmd_vcs_info
-RPROMPT='${vcs_info_msg_0_}'
-
-# History
-HISTSIZE=1000000
-SAVEHIST=1000000
-HISTFILE=~/.zsh_history
-
-# other variables
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-
-# Fix $TERM if a terminfo for the terminal is not available
-if ! infocmp "$TERM" >/dev/null; then
-  if [ "$TERM" = "rxvt-unicode-256color" ]; then
-    if infocmp "rxvt-256color" >/dev/null; then
-      TERM="rxvt-256color"
-    fi
-  fi
-  if [ "$TERM" = "tmux-256color" ]; then
-    if infocmp "screen-256color" >/dev/null; then
-      TERM="screen-256color"
-    fi
-  fi
-fi
-
-# Force 256-colorization by correcting TERM variable
-if [[ "$TERM" == "xterm" && -e /usr/share/terminfo/x/xterm-256color ]]; then
-    TERM="xterm-256color"
-elif [[ "$TERM" == "screen" && -e /usr/share/terminfo/s/screen-256color ]]; then
-    TERM="screen-256color"
-elif [[ "$TERM" == "screen-bce" && -e /usr/share/terminfo/s/screen-256color-bce ]]; then
-    TERM="screen-256color-bce"
-fi
-
-
 # Use hard limits, except for a smaller stack and no core dumps
 unlimit
 limit coredumpsize 0
@@ -229,11 +130,66 @@ alias cml=call_me_later
 
 function freload() { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
 
+# Where to look for autoloaded function definitions
+fpath=($fpath ~/.zfunc)
+
 # Autoload all shell functions from all directories in $fpath (following
 # symlinks) that have the executable bit on (the executable bit is not
 # necessary, but gives you an easy way to stop the autoloading of a
 # particular shell function). $fpath should not be empty for this to work.
 for func in $^fpath/*(N-.x:t); autoload $func
+
+# automatically remove duplicates from these arrays
+typeset -U path cdpath fpath manpath
+
+manpath=($manpath)
+export MANPATH
+
+
+# default prompt
+PROMPT=$'%B%(!.%F{red}root.%F{$host_color}%n)@%m%f %F{magenta}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f %F{black}[%D{%Y-%m-%d %H:%M:%S}]%f
+%F{blue}❱%f%b '
+
+# prompt for right side of screen
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr   '%F{yellow}+%f'
+zstyle ':vcs_info:git:*' unstagedstr '%F{red}!%f'
+zstyle ':vcs_info:*' formats       '%B%s:%F{green}%b%f%c%u'
+zstyle ':vcs_info:*' actionformats '%B%s:%F{green}%b%f%F{red}>%a%f%c%u'
+function precmd_vcs_info() { LANG=en_US.UTF-8 vcs_info }
+add-zsh-hook precmd precmd_vcs_info
+RPROMPT='${vcs_info_msg_0_}'
+
+# History
+HISTSIZE=1000000
+SAVEHIST=1000000
+HISTFILE=~/.zsh_history
+
+# other variables
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
+# Fix $TERM if a terminfo for the terminal is not available
+if ! infocmp "$TERM" >/dev/null; then
+  if [ "$TERM" = "rxvt-unicode-256color" ]; then
+    if infocmp "rxvt-256color" >/dev/null; then
+      TERM="rxvt-256color"
+    fi
+  fi
+  if [ "$TERM" = "tmux-256color" ]; then
+    if infocmp "screen-256color" >/dev/null; then
+      TERM="screen-256color"
+    fi
+  fi
+fi
+
+# Force 256-colorization by correcting TERM variable
+if [[ "$TERM" == "xterm" && -e /usr/share/terminfo/x/xterm-256color ]]; then
+    TERM="xterm-256color"
+elif [[ "$TERM" == "screen" && -e /usr/share/terminfo/s/screen-256color ]]; then
+    TERM="screen-256color"
+elif [[ "$TERM" == "screen-bce" && -e /usr/share/terminfo/s/screen-256color-bce ]]; then
+    TERM="screen-256color-bce"
+fi
 
 
 # Options
@@ -270,6 +226,38 @@ unsetopt global_export
 if [[ $USER == "root" ]]; then
     unsetopt clobber
 fi
+
+
+# Autoload zsh modules when they are referenced
+zmodload -a zsh/zpty zpty
+zmodload -a zsh/zprof zprof
+zmodload -ap zsh/mapfile mapfile
+# stat(1) is now commonly an external command, so just load zstat
+zmodload -aF zsh/stat b:zstat
+
+
+# Key Bindings
+bindkey -e                  # use emacs key bindings
+
+
+# Autoloads
+autoload -U promptinit; promptinit
+autoload -U colors; colors
+autoload -Uz vcs_info
+autoload -U zcalc
+autoload -U zargs
+autoload -U url-quote-magic; zle -N self-insert url-quote-magic
+autoload -Uz add-zsh-hook
+# run-help
+unalias run-help
+autoload -Uz run-help
+autoload -Uz run-help-git
+autoload -Uz run-help-openssl
+autoload -Uz run-help-p4
+autoload -Uz run-help-sudo
+autoload -Uz run-help-svk
+autoload -Uz run-help-svn
+HELPDIR=/usr/share/zsh/5.0.5/help
 
 
 # Completion
@@ -315,10 +303,6 @@ zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns \
 zstyle ':completion:*:functions' ignored-patterns '_*'
 # Disable completion for some commands.
 compdef -d p4
-
-
-# Key Bindings
-bindkey -e                  # use emacs key bindings
 
 
 # Cooperate with the term+ mode of Emacs.

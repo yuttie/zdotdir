@@ -42,3 +42,26 @@ if [ -f ~/.dir_colors ]; then
     eval $(dircolors ~/.dir_colors)
   fi
 fi
+
+# Path
+case "$OSTYPE" in
+  darwin*)
+    additional_path=(/usr/local/opt/ruby/bin)
+    # Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
+    export GHC_DOT_APP="/Applications/ghc-7.8.3.app"
+    if [ -d "$GHC_DOT_APP" ]; then
+      additional_path=("${GHC_DOT_APP}/Contents/bin" $additional_path)
+    fi
+    ;;
+  *)
+    additional_path=(~/bin
+                     ~/.local/bin
+                     ~/.gem/ruby/?.?.?/bin
+                     ~/.cabal/bin
+                     ~/.cargo/bin)
+    ;;
+esac
+for (( i=${#additional_path[@]}; i>0; i-- )); do
+  d=${additional_path[i]}
+  [[ -d $d ]] && path=($d $path)
+done
