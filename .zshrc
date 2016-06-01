@@ -69,16 +69,16 @@ function Nvim() {
       ~/dotfiles/launch-st -e nvim "$@"&!
 }
 # Emacs
-alias elc='emacs --quick -batch --funcall batch-byte-compile'
+alias et='KONSOLE_DBUS_SESSION=1 emacs --no-window-system'
 function eg() { emacs --display=${DISPLAY:-:0} "$@"&! }
 function egt() {
   env --unset TMUX \
       KONSOLE_DBUS_SESSION=1 \
       ~/dotfiles/launch-st -e emacs --no-window-system "$@"&!
 }
-alias et='emacs --no-window-system'
+# Emacsclient
 alias ecg='emacsclient --alternate-editor='' --create-frame --display=${DISPLAY:-:0} --no-wait'
-alias ect='emacsclient --alternate-editor='' --create-frame --tty'
+alias ect='KONSOLE_DBUS_SESSION=1 emacsclient --alternate-editor='' --create-frame --tty'
 # Mac OS X
 case "$OSTYPE" in
   darwin*)
