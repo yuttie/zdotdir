@@ -33,6 +33,8 @@ else
   export BROWSER='links'
 fi
 
+export RUST_SRC_PATH=~/rust/src
+
 if [[ `uname` == 'Darwin' ]]; then
   export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$(find /usr/local/Cellar -name 'pkgconfig' -type d | sed -n -e '1h; 1!H; ${ x; s/\n/:/g; p; }')
 fi
