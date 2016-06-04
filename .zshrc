@@ -157,6 +157,33 @@ function precmd_vcs_info() { LANG=en_US.UTF-8 vcs_info }
 add-zsh-hook precmd precmd_vcs_info
 RPROMPT='${vcs_info_msg_0_}'
 
+# Path
+case "$OSTYPE" in
+  darwin*)
+    additional_path=(/usr/local/opt/ruby/bin)
+    # Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
+    export GHC_DOT_APP="/Applications/ghc-7.8.3.app"
+    if [ -d "$GHC_DOT_APP" ]; then
+      additional_path=("${GHC_DOT_APP}/Contents/bin" $additional_path)
+    fi
+    ;;
+  *)
+    additional_path=(~/bin
+                     ~/.local/bin
+                     ~/.gem/ruby/?.?.?/bin
+                     ~/.cabal/bin
+                     ~/.cargo/bin)
+    ;;
+esac
+for (( i=${#additional_path[@]}; i>0; i-- )); do
+  d=${additional_path[i]}
+  [[ -d $d ]] && path=($d $path)
+done
+export PATH
+
+manpath=($manpath)
+export MANPATH
+
 # History
 HISTSIZE=1000000
 SAVEHIST=1000000
