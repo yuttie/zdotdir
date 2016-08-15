@@ -296,8 +296,12 @@ HELPDIR=/usr/share/zsh/5.0.5/help
 # distribution.
 autoload -Uz compinit; compinit
 autoload -Uz bashcompinit; bashcompinit
-eval "$(stack --bash-completion-script stack)"
-source ~/.local/bin/aws_zsh_completer.sh
+if command -v stack >/dev/null 2>&1; then
+  eval "$(stack --bash-completion-script stack)"
+fi
+if [ -e ~/.local/bin/aws_zsh_completer.sh ]; then
+  source ~/.local/bin/aws_zsh_completer.sh
+fi
 # Completion Styles
 # colorize
 if [ -n "$LS_COLORS" ]; then
@@ -359,7 +363,9 @@ if [[ -n "$INSIDE_EMACS" ]]; then
 fi
 
 # OPAM configuration
-source ~/.opam/opam-init/init.zsh >/dev/null 2>/dev/null || true
+if [ -e ~/.opam/opam-init/init.zsh ]; then
+  source ~/.opam/opam-init/init.zsh >/dev/null 2>/dev/null || true
+fi
 
 # Refresh the prompt before executing a command line
 function refresh_prompt_and_accept_line() { zle reset-prompt; zle accept-line; }
