@@ -382,10 +382,10 @@ add-zsh-hook precmd show_last_exit_code
 export NOTIFY_COMMAND_COMPLETE_TIMEOUT=1
 source ~/.zsh.d/zsh-notify/notify.plugin.zsh
 
-# peco
+# fzf
 # https://gist.github.com/jimeh/7d94f1000cfc9cba2893
 if command -v fzf >/dev/null 2>&1; then
-  function peco_select_history() {
+  function fzf_select_history() {
     local tac
     { command -v gtac >/dev/null 2>&1 && tac="gtac" } || \
       { command -v tac >/dev/null 2>&1 && tac="tac" } || \
@@ -396,6 +396,6 @@ if command -v fzf >/dev/null 2>&1; then
     zle -R -c       # refresh
   }
 
-  zle -N peco_select_history
-  bindkey '^T' peco_select_history
+  zle -N fzf_select_history
+  bindkey '^T' fzf_select_history
 fi
