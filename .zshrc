@@ -61,13 +61,12 @@ alias open='xdg-open'
 alias lpxdvi='pxdvi -geometry 1005x711 -paper a4r'
 alias ds='du -m -d1 | sort -n'
 alias bat='upower -e | fgrep -F BAT | xargs -n 1 upower -i'
-alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 NVIM_TUI_ENABLE_CURSOR_SHAPE=1 nvim'
-alias view='NVIM_TUI_ENABLE_TRUE_COLOR=1 NVIM_TUI_ENABLE_CURSOR_SHAPE=1 nvim -R'
-alias vimdiff='NVIM_TUI_ENABLE_TRUE_COLOR=1 NVIM_TUI_ENABLE_CURSOR_SHAPE=1 nvim -d'
-alias nvim='NVIM_TUI_ENABLE_TRUE_COLOR=1 NVIM_TUI_ENABLE_CURSOR_SHAPE=1 nvim'
+alias vim='NVIM_TUI_ENABLE_CURSOR_SHAPE=1 nvim'
+alias view='NVIM_TUI_ENABLE_CURSOR_SHAPE=1 nvim -R'
+alias vimdiff='NVIM_TUI_ENABLE_CURSOR_SHAPE=1 nvim -d'
+alias nvim='NVIM_TUI_ENABLE_CURSOR_SHAPE=1 nvim'
 function Nvim() {
   env --unset TMUX \
-      NVIM_TUI_ENABLE_TRUE_COLOR=1 \
       NVIM_TUI_ENABLE_CURSOR_SHAPE=1 \
       ~/dotfiles/launch-st -e nvim "$@"&!
 }
