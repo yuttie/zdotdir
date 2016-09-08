@@ -318,8 +318,6 @@ zstyle -e ':completion:*:approximate:*' max-errors \
     'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
 # insert all expansions for expand completer
 zstyle ':completion:*:expand:*' tag-order all-expansions
-# Arrow-key driven interface
-zstyle ':completion:*' menu select
 # formatting and messages
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*:descriptions' format '%B%d%b'
