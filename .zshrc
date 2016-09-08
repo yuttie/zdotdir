@@ -17,6 +17,9 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
 
+# Environment variables that are overridden after .zshenv
+export LESSOPEN=""
+
 # Load host-specific configurations
 if [ -e ~/.host.zsh ] ; then
     source ~/.host.zsh
