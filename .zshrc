@@ -341,6 +341,11 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 compdef -d p4
 
 
+# Replace a completion suffix with space when one of the following characters
+# are input after the completion
+ZLE_SPACE_SUFFIX_CHARS=$'|'
+
+
 # Cooperate with the term+ mode of Emacs.
 if [[ -n "$INSIDE_EMACS" ]]; then
   echo -ne "\e]51;host;$(hostname)\e\\" > /dev/tty
