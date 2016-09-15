@@ -1,22 +1,3 @@
-# zplug
-source ~/.zplug/init.zsh
-
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
-zplug "zsh-users/zsh-history-substring-search"
-zplug "rust-lang/zsh-config"
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-# Then, source plugins and add commands to $PATH
-zplug load --verbose
-
 # Environment variables that are overridden after .zshenv
 export LESSOPEN=""
 
@@ -406,3 +387,23 @@ if command -v fzf >/dev/null 2>&1; then
   zle -N fzf_select_history
   bindkey '^T' fzf_select_history
 fi
+
+
+# zplug
+source ~/.zplug/init.zsh
+
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-history-substring-search"
+zplug "rust-lang/zsh-config"
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
