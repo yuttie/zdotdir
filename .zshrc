@@ -6,6 +6,27 @@ if [ -e ~/.host.zsh ] ; then
     source ~/.host.zsh
 fi
 
+
+# Autoloads
+autoload -U promptinit; promptinit
+autoload -U colors; colors
+autoload -Uz vcs_info
+autoload -U zcalc
+autoload -U zargs
+autoload -U url-quote-magic; zle -N self-insert url-quote-magic
+autoload -Uz add-zsh-hook
+# run-help
+unalias run-help
+autoload -Uz run-help
+autoload -Uz run-help-git
+autoload -Uz run-help-openssl
+autoload -Uz run-help-p4
+autoload -Uz run-help-sudo
+autoload -Uz run-help-svk
+autoload -Uz run-help-svn
+HELPDIR=/usr/share/zsh/5.0.5/help
+
+
 # Use hard limits, except for a smaller stack and no core dumps
 unlimit
 limit coredumpsize 0
@@ -251,26 +272,6 @@ zmodload -aF zsh/stat b:zstat
 
 # Key Bindings
 bindkey -e                  # use emacs key bindings
-
-
-# Autoloads
-autoload -U promptinit; promptinit
-autoload -U colors; colors
-autoload -Uz vcs_info
-autoload -U zcalc
-autoload -U zargs
-autoload -U url-quote-magic; zle -N self-insert url-quote-magic
-autoload -Uz add-zsh-hook
-# run-help
-unalias run-help
-autoload -Uz run-help
-autoload -Uz run-help-git
-autoload -Uz run-help-openssl
-autoload -Uz run-help-p4
-autoload -Uz run-help-sudo
-autoload -Uz run-help-svk
-autoload -Uz run-help-svn
-HELPDIR=/usr/share/zsh/5.0.5/help
 
 
 # Completion
