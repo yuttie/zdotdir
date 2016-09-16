@@ -191,7 +191,7 @@ for (( i=${#additional_path[@]}; i>0; i-- )); do
 done
 export PATH
 
-manpath=($NPM_PACKAGES/share/man $manpath)
+manpath=($NPM_PACKAGES/share/man $(manpath))
 export MANPATH
 
 # History
