@@ -284,9 +284,6 @@ autoload -Uz bashcompinit; bashcompinit
 if command -v stack >/dev/null 2>&1; then
   eval "$(stack --bash-completion-script stack)"
 fi
-if [ -e ~/.local/bin/aws_zsh_completer.sh ]; then
-  source ~/.local/bin/aws_zsh_completer.sh
-fi
 # Completion Styles
 # colorize
 if [ -n "$LS_COLORS" ]; then
@@ -413,3 +410,8 @@ zplug load --verbose
 
 # Properly clear autosuggestions
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=reset-prompt-and-accept-line
+
+# Activate auto compeltion for aws-cli
+if [ -e `which aws_zsh_completer.sh` ]; then
+  source `which aws_zsh_completer.sh`
+fi
