@@ -191,6 +191,7 @@ for (( i=${#additional_path[@]}; i>0; i-- )); do
 done
 export PATH
 
+unset MANPATH
 manpath=($NPM_PACKAGES/share/man $(manpath))
 export MANPATH
 
