@@ -357,9 +357,9 @@ if [ -e ~/.opam/opam-init/init.zsh ]; then
 fi
 
 # Refresh the prompt before executing a command line
-function refresh_prompt_and_accept_line() { zle reset-prompt; zle accept-line; }
-zle -N refresh_prompt_and_accept_line
-bindkey "\C-m" refresh_prompt_and_accept_line
+function reset-prompt-and-accept-line() { zle reset-prompt; zle accept-line; }
+zle -N reset-prompt-and-accept-line
+bindkey "\C-m" reset-prompt-and-accept-line
 
 # Show exit codes of commands
 function show_last_exit_code() { echo "$fg_bold[black]$?$reset_color"; }
@@ -409,3 +409,6 @@ fi
 
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
+
+# Properly clear autosuggestions
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=reset-prompt-and-accept-line
