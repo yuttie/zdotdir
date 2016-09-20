@@ -426,7 +426,7 @@ ZSH_HIGHLIGHT_STYLES[builtin]=fg=green,bold
 ZSH_HIGHLIGHT_STYLES[function]=fg=green,bold
 ZSH_HIGHLIGHT_STYLES[command]=fg=green,bold
 ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,bold,underline
-ZSH_HIGHLIGHT_STYLES[commandseparator]=none
+ZSH_HIGHLIGHT_STYLES[commandseparator]=fg=magenta
 ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=green,bold
 ZSH_HIGHLIGHT_STYLES[path]=underline
 ZSH_HIGHLIGHT_STYLES[path_pathseparator]=
