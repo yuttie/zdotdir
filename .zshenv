@@ -9,6 +9,8 @@ export LANG='en_US.UTF-8'
 export EDITOR='nvim'
 export DICTIONARY=en_US
 
+export FZF_DEFAULT_OPTS='--color=light'
+
 export LESS='--RAW-CONTROL-CHARS --ignore-case --chop-long-lines'
 
 # Colored man pages
