@@ -440,9 +440,9 @@ ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
 ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=blue
 ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=blue
 ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]=fg=blue
-ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=cyan
-ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=cyan
-ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]=fg=cyan
+ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=166
+ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=166
+ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]=fg=166
 ZSH_HIGHLIGHT_STYLES[assign]=none
 ZSH_HIGHLIGHT_STYLES[redirection]=fg=yellow,bold
 ZSH_HIGHLIGHT_STYLES[comment]=fg=black,bold
