@@ -428,9 +428,9 @@ ZSH_HIGHLIGHT_STYLES[command]=fg=green,bold
 ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,bold,underline
 ZSH_HIGHLIGHT_STYLES[commandseparator]=none
 ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=green,bold
-ZSH_HIGHLIGHT_STYLES[path]=fg=black,underline
+ZSH_HIGHLIGHT_STYLES[path]=underline
 ZSH_HIGHLIGHT_STYLES[path_pathseparator]=
-ZSH_HIGHLIGHT_STYLES[path_prefix]=fg=black,underline
+ZSH_HIGHLIGHT_STYLES[path_prefix]=underline
 ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]=
 ZSH_HIGHLIGHT_STYLES[globbing]=fg=red
 ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=red
