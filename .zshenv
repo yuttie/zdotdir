@@ -23,6 +23,8 @@ export LESS_TERMCAP_se=$'\E[0m'         # end standout-mode
 export LESS_TERMCAP_us=$'\E[01;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'         # end underline
 
+export GREP_COLOR='01;35'
+
 export BC_ENV_ARGS="-l ${HOME}/.bc"
 
 export PYTHONSTARTUP=~/.pythonstartup
