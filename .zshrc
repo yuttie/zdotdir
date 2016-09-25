@@ -376,7 +376,7 @@ if command -v fzf >/dev/null 2>&1; then
       { command -v tac >/dev/null 2>&1 && tac="tac" } || \
       tac="tail -r"
     BUFFER=$(fc -l -n 1 | eval $tac | \
-                fzf --tiebreak=index --query "$LBUFFER")
+                fzf --tiebreak=index --query "$LBUFFER" --prompt='history> ')
     CURSOR=$#BUFFER # move cursor
     zle -R -c       # refresh
   }
