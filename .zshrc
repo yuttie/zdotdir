@@ -179,7 +179,6 @@ case "$OSTYPE" in
                      ~/.gem/ruby/2.1.0/bin
                      ~/.gem/ruby/2.2.0/bin
                      ~/.gem/ruby/2.3.0/bin
-                     ~/.cabal/bin
                      ~/.cargo/bin
                      $NPM_PACKAGES/bin)
     ;;
