@@ -440,7 +440,9 @@ if [ -e `which aws_zsh_completer.sh` ]; then
   source `which aws_zsh_completer.sh`
 fi
 
-# zsh-syntax-highlighting
+# Highlighting
+zle_highlight=(region:standout special:standout suffix:bold isearch:fg=magenta,underline paste:standout)
+
 ZSH_HIGHLIGHT_STYLES[default]=none
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=magenta,bold
 ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=blue,bold
