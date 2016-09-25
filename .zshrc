@@ -181,7 +181,7 @@ case "$OSTYPE" in
                      ~/.gem/ruby/2.3.0/bin
                      ~/.cabal/bin
                      ~/.cargo/bin
-                     ~/$NPM_PACKAGES/bin)
+                     $NPM_PACKAGES/bin)
     ;;
 esac
 for (( i=${#additional_path[@]}; i>0; i-- )); do
