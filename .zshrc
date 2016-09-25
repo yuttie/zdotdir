@@ -382,7 +382,7 @@ if command -v fzf >/dev/null 2>&1; then
   }
 
   zle -N fzf_select_history
-  bindkey '^T' fzf_select_history
+  bindkey '^ h' fzf_select_history
 fi
 
 # http://qiita.com/Linda_pp/items/9ff801aa6e00459217f7
