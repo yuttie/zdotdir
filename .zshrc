@@ -385,6 +385,32 @@ if command -v fzf >/dev/null 2>&1; then
   bindkey '^T' fzf_select_history
 fi
 
+# http://qiita.com/Linda_pp/items/9ff801aa6e00459217f7
+function list-all-man-pages() {
+    local parent dir file
+    local paths=("${(s/:/)$(man -aw)}")
+    for parent in $paths; do
+        for dir in $(/bin/ls -1 $parent); do
+            local p="${parent}/${dir}"
+            if [ -d "$p" ]; then
+                IFS=$'\n' local lines=($(/bin/ls -1 "$p"))
+                for file in $lines; do
+                    echo "${p}/${file}"
+                done
+            fi
+        done
+    done
+}
+
+function fzf-man() {
+    local selected=$(list-all-man-pages | fzf --prompt='man> ')
+    if [[ "$selected" != "" ]]; then
+        man "$selected"
+    fi
+}
+zle -N fzf-man
+bindkey '^ m' fzf-man
+
 
 # zplug
 source ~/.zplug/init.zsh
