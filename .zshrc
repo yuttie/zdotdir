@@ -415,6 +415,7 @@ bindkey '^ m' fzf-man
 # zplug
 source ~/.zplug/init.zsh
 
+zplug 'zplug/zplug'
 zplug 'zsh-users/zsh-autosuggestions'
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
