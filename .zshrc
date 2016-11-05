@@ -369,21 +369,19 @@ source ~/.zsh.d/zsh-notify/notify.plugin.zsh
 
 # fzf
 # https://gist.github.com/jimeh/7d94f1000cfc9cba2893
-if command -v fzf >/dev/null 2>&1; then
-  function fzf_select_history() {
-    local tac
-    { command -v gtac >/dev/null 2>&1 && tac="gtac" } || \
-      { command -v tac >/dev/null 2>&1 && tac="tac" } || \
-      tac="tail -r"
-    BUFFER=$(fc -l -n 1 | eval $tac | \
-                fzf --tiebreak=index --query "$LBUFFER" --prompt='history> ')
-    CURSOR=$#BUFFER # move cursor
-    zle -R -c       # refresh
-  }
+function fzf_select_history() {
+  local tac
+  { command -v gtac >/dev/null 2>&1 && tac="gtac" } || \
+    { command -v tac >/dev/null 2>&1 && tac="tac" } || \
+    tac="tail -r"
+  BUFFER=$(fc -l -n 1 | eval $tac | \
+              fzf --tiebreak=index --query "$LBUFFER" --prompt='history> ')
+  CURSOR=$#BUFFER # move cursor
+  zle -R -c       # refresh
+}
 
-  zle -N fzf_select_history
-  bindkey '^ h' fzf_select_history
-fi
+zle -N fzf_select_history
+bindkey '^ h' fzf_select_history
 
 # http://qiita.com/Linda_pp/items/9ff801aa6e00459217f7
 function list-all-man-pages() {
