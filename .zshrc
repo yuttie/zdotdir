@@ -423,9 +423,7 @@ zplug "rust-lang/zsh-config"
 zplug "junegunn/fzf-bin", \
     as:command, \
     from:gh-r, \
-    rename-to:fzf, \
-    use:"*linux*amd64*", \
-    ignore:INDEX
+    rename-to:fzf
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
