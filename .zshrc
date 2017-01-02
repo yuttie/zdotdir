@@ -448,22 +448,22 @@ fi
 zle_highlight=(region:standout special:standout suffix:bold isearch:fg=magenta,underline paste:standout)
 
 ZSH_HIGHLIGHT_STYLES[default]=none
-ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=magenta,bold
-ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=blue,bold
-ZSH_HIGHLIGHT_STYLES[alias]=fg=green,bold
-ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green,bold,underline
-ZSH_HIGHLIGHT_STYLES[builtin]=fg=green,bold
-ZSH_HIGHLIGHT_STYLES[function]=fg=green,bold
-ZSH_HIGHLIGHT_STYLES[command]=fg=green,bold
-ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,bold,underline
-ZSH_HIGHLIGHT_STYLES[commandseparator]=fg=magenta
-ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=green,bold
-ZSH_HIGHLIGHT_STYLES[path]=underline
+ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=black,bold
+ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=cyan,bold
+ZSH_HIGHLIGHT_STYLES[alias]=fg=white,bold
+ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=white,bold,underline
+ZSH_HIGHLIGHT_STYLES[builtin]=fg=magenta,bold
+ZSH_HIGHLIGHT_STYLES[function]=fg=white,bold
+ZSH_HIGHLIGHT_STYLES[command]=fg=white,bold
+ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,bold,underline
+ZSH_HIGHLIGHT_STYLES[commandseparator]=fg=yellow,bold
+ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=white,bold
+ZSH_HIGHLIGHT_STYLES[path]=fg=blue,underline
 ZSH_HIGHLIGHT_STYLES[path_pathseparator]=
 ZSH_HIGHLIGHT_STYLES[path_prefix]=underline
 ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]=
-ZSH_HIGHLIGHT_STYLES[globbing]=fg=red
-ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=red
+ZSH_HIGHLIGHT_STYLES[globbing]=fg=yellow
+ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=yellow
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=none
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=none
 ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
