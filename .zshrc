@@ -426,7 +426,7 @@ bindkey '^ m' fzf-man
 # zplug
 source ~/.zplug/init.zsh
 
-zplug 'zplug/zplug'
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug 'zsh-users/zsh-autosuggestions'
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
