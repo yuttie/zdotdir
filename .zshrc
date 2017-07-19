@@ -162,8 +162,8 @@ typeset -U path cdpath fpath manpath
 
 
 # default prompt
-PROMPT=$'%B%(!.%F{red}root.%F{$host_color}%n)@%m%f %F{magenta}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f %b%F{white}[%D{%Y-%m-%d %H:%M:%S}]%f%B
-%F{blue}❱%f%b '
+PROMPT=$'%B%(!.%F{red}root.%F{$host_color}%n)@%m%f %F{red}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f %F{black}[%D{%Y-%m-%d %H:%M:%S}]%f
+%F{magenta}>>>%f%b '
 
 # prompt for right side of screen
 zstyle ':vcs_info:git:*' check-for-changes true
