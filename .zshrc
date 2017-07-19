@@ -37,7 +37,7 @@ autoload -Uz run-help-p4
 autoload -Uz run-help-sudo
 autoload -Uz run-help-svk
 autoload -Uz run-help-svn
-HELPDIR=/usr/share/zsh/5.0.5/help
+HELPDIR=/usr/share/zsh/$ZSH_VERSION/help
 
 
 # Use hard limits, except for a smaller stack and no core dumps
