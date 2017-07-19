@@ -371,7 +371,7 @@ zle -N reset-prompt-and-accept-line
 bindkey "\C-m" reset-prompt-and-accept-line
 
 # Show exit codes of commands
-function show_last_exit_code() { echo "$fg[white]$?$reset_color"; }
+function show_last_exit_code() { echo "$fg_bold[black]$?$reset_color"; }
 add-zsh-hook precmd show_last_exit_code
 
 # zsh-notify
