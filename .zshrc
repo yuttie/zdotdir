@@ -459,16 +459,16 @@ fi
 zle_highlight=(region:standout special:standout suffix:bold isearch:fg=magenta,underline paste:standout)
 
 ZSH_HIGHLIGHT_STYLES[default]=none
-ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=black,bold
+ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=white
 ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=cyan,bold
-ZSH_HIGHLIGHT_STYLES[alias]=fg=white,bold
-ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=white,bold,underline
+ZSH_HIGHLIGHT_STYLES[alias]=fg=black
+ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=black,underline
 ZSH_HIGHLIGHT_STYLES[builtin]=fg=magenta,bold
-ZSH_HIGHLIGHT_STYLES[function]=fg=white,bold
-ZSH_HIGHLIGHT_STYLES[command]=fg=white,bold
-ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,bold,underline
+ZSH_HIGHLIGHT_STYLES[function]=fg=black
+ZSH_HIGHLIGHT_STYLES[command]=fg=black
+ZSH_HIGHLIGHT_STYLES[precommand]=fg=black,underline
 ZSH_HIGHLIGHT_STYLES[commandseparator]=fg=yellow,bold
-ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=white,bold
+ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=black
 ZSH_HIGHLIGHT_STYLES[path]=fg=blue,underline
 ZSH_HIGHLIGHT_STYLES[path_pathseparator]=
 ZSH_HIGHLIGHT_STYLES[path_prefix]=underline
@@ -486,4 +486,4 @@ ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=166
 ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]=fg=166
 ZSH_HIGHLIGHT_STYLES[assign]=none
 ZSH_HIGHLIGHT_STYLES[redirection]=fg=yellow,bold
-ZSH_HIGHLIGHT_STYLES[comment]=fg=black,bold
+ZSH_HIGHLIGHT_STYLES[comment]=fg=white
