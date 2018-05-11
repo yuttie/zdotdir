@@ -81,10 +81,8 @@ alias bat='upower -e | fgrep -F BAT | xargs -n 1 upower -i'
 alias vim='nvim'
 alias view='nvim -R'
 alias vimdiff='nvim -d'
-alias nvim='nvim'
 function Nvim() {
-  env --unset TMUX \
-      ~/dotfiles/launch-st -e nvim "$@"&!
+  env --unset TMUX st -e nvim "$@"&!
 }
 # Emacs
 alias et='KONSOLE_DBUS_SESSION=1 emacs --no-window-system'
