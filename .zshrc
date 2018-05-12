@@ -188,12 +188,8 @@ case "$OSTYPE" in
     fi
     ;;
   *)
-    additional_path=(~/bin
-                     ~/.local/bin
-                     ~/.gem/ruby/2.0.0/bin
-                     ~/.gem/ruby/2.1.0/bin
-                     ~/.gem/ruby/2.2.0/bin
-                     ~/.gem/ruby/2.3.0/bin
+    additional_path=(~/.local/bin
+                     $(ls -1 -d ~/.gem/ruby/* | sort --version-sort --reverse | head -n1)/bin
                      ~/.cargo/bin
                      $NPM_PACKAGES/bin)
     ;;
