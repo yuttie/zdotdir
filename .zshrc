@@ -29,8 +29,8 @@ autoload -U zargs
 autoload -U url-quote-magic; zle -N self-insert url-quote-magic
 autoload -Uz add-zsh-hook
 # run-help
-unalias run-help
-autoload -Uz run-help
+export HELPDIR=/usr/share/zsh/$ZSH_VERSION/help
+unalias run-help && autoload -Uz run-help
 autoload -Uz run-help-git
 autoload -Uz run-help-ip
 autoload -Uz run-help-openssl
@@ -148,7 +148,7 @@ function call_me_later() {
 }
 alias cml=call_me_later
 
-function freload() { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
+freload() { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
 
 # Where to look for autoloaded function definitions
 fpath=(~/.zfunc $fpath)
@@ -163,21 +163,9 @@ for func in $^fpath/*(N-.x:t); autoload $func
 typeset -U path cdpath fpath manpath
 
 
-# default prompt
-PROMPT=$'%B%(!.%F{red}root.%F{$host_color}%n)@%m%f %F{red}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f %F{black}[%D{%Y-%m-%d %H:%M:%S}]%f
-%F{magenta}>>>%f%b '
-
-# prompt for right side of screen
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr   '%F{yellow}+%f'
-zstyle ':vcs_info:git:*' unstagedstr '%F{red}!%f'
-zstyle ':vcs_info:*' formats       '%B%s:%F{green}%b%f%c%u'
-zstyle ':vcs_info:*' actionformats '%B%s:%F{green}%b%f%F{red}>%a%f%c%u'
-function precmd_vcs_info() { LANG=en_US.UTF-8 vcs_info }
-add-zsh-hook precmd precmd_vcs_info
-RPROMPT='${vcs_info_msg_0_}'
-
+#
 # Path
+#
 case "$OSTYPE" in
   darwin*)
     additional_path=(/usr/local/opt/ruby/bin)
@@ -204,6 +192,28 @@ unset MANPATH
 manpath=($NPM_PACKAGES/share/man $(manpath))
 export MANPATH
 
+
+#
+# Prompts
+#
+# default prompt
+PROMPT=$'%B%(!.%F{red}root.%F{$host_color}%n)@%m%f %F{red}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f %F{black}[%D{%Y-%m-%d %H:%M:%S}]%f
+%F{magenta}>>>%f%b '
+
+# prompt for right side of screen
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr   '%F{yellow}+%f'
+zstyle ':vcs_info:git:*' unstagedstr '%F{red}!%f'
+zstyle ':vcs_info:*' formats       '%B%s:%F{green}%b%f%c%u'
+zstyle ':vcs_info:*' actionformats '%B%s:%F{green}%b%f%F{red}>%a%f%c%u'
+function precmd_vcs_info() { LANG=en_US.UTF-8 vcs_info }
+add-zsh-hook precmd precmd_vcs_info
+RPROMPT='${vcs_info_msg_0_}'
+
+
+#
+# Environment Variables
+#
 # History
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -236,7 +246,9 @@ elif [[ "$TERM" == "screen-bce" && -e /usr/share/terminfo/s/screen-256color-bce 
 fi
 
 
+#
 # Options
+#
 # History Options
 setopt hist_ignore_all_dups # Duplicate histories are ignored
 setopt hist_save_nodups # Don't save duplicate history
@@ -271,6 +283,9 @@ if [[ $USER == "root" ]]; then
 fi
 
 
+#
+# Modules
+#
 # Autoload zsh modules when they are referenced
 zmodload -a zsh/zpty zpty
 zmodload -a zsh/zprof zprof
@@ -283,7 +298,9 @@ zmodload -aF zsh/stat b:zstat
 bindkey -e                  # use emacs key bindings
 
 
+#
 # Completion
+#
 # Setup new style completion system. To see examples of the old style (compctl
 # based) programmable completion, check Misc/compctl-examples in the zsh
 # distribution.
@@ -292,7 +309,11 @@ autoload -Uz bashcompinit; bashcompinit
 if command -v stack >/dev/null 2>&1; then
   eval "$(stack --bash-completion-script stack)"
 fi
+
+
+#
 # Completion Styles
+#
 # colorize
 if [ -n "$LS_COLORS" ]; then
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -321,8 +342,8 @@ zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 zstyle ':completion:*:processes' command 'ps -o pid,s,nice,stime,args'
 # Filename suffixes to ignore during completion (except after rm command)
 zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns \
-    '*?.o' '*?.c~' '*?.cpp~' \
-    '*?.old' '*?.pro'
+  '*?.o' '*?.c~' '*?.cpp~' \
+  '*?.old' '*?.pro'
 # ignore completion functions (until the _ignored completer)
 zstyle ':completion:*:functions' ignored-patterns '_*'
 # Disable completion for some commands.
@@ -419,18 +440,18 @@ zplug "zsh-users/zsh-history-substring-search"
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "rust-lang/zsh-config"
 zplug "junegunn/fzf", \
-    use:"shell/*.zsh"
+  use:"shell/*.zsh"
 zplug "junegunn/fzf-bin", \
-    as:command, \
-    from:gh-r, \
-    rename-to:fzf
+  as:command, \
+  from:gh-r, \
+  rename-to:fzf
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
 fi
 
 # Then, source plugins and add commands to $PATH
