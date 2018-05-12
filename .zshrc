@@ -126,8 +126,6 @@ alias -g F='| fzf'
 
 
 # Shell functions
-function wb() { $BROWSER $* > /dev/null 2>&1 &! }
-function fm() { pcmanfm $* > /dev/null 2>&1 &! }
 function encrypt() {
   for f in "$@"; do
     gpg --output "$f.gpg" --cipher-algo AES256 -z 0 --symmetric "$f"
