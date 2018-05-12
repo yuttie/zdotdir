@@ -1,0 +1,32 @@
+local data_home=$XDG_DATA_HOME
+test -z "$data_home" && data_home="$HOME/.local/share"
+
+local cache_home=$XDG_CACHE_HOME
+test -z "$cache_home" && cache_home="$HOME/.cache"
+
+local fish_data="$data_home/fish"
+local zsh_cache="$cache_home/zsh"
+local fish_history_file="$fish_data/fish_history"
+mkdir -p "$zsh_cache"
+
+# for GNU's stat or for FreeBSD's stat)
+local timestamp=$(stat -c '%Y' "$fish_history_file" 2>/dev/null || stat -f '%m' "$fish_history_file" 2>/dev/null)
+
+# Update a cache file if necessary
+if [ ! -f "$zsh_cache/decoded_fish_history-$timestamp" ]; then
+  touch "$zsh_cache/decoded_fish_history-$timestamp"
+  rm -f "$zsh_cache/decoded_fish_history-*"
+
+  ruby $HOME/zdotdir/load-commands-from-fish-history.rb "$fish_history_file" >"$zsh_cache/decoded_fish_history-$timestamp"
+fi
+
+local selected
+selected=$(cat "$zsh_cache/decoded_fish_history-$timestamp" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(__fzfcmd))
+local ret=$?
+if [ -n "$selected" ]; then
+  BUFFER=$selected
+  CURSOR=$#BUFFER
+fi
+zle redisplay
+typeset -f zle-line-init >/dev/null && zle zle-line-init
+return $ret
