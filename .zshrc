@@ -431,6 +431,8 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search"
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "rust-lang/zsh-config"
+zplug "junegunn/fzf", \
+    use:"shell/*.zsh"
 zplug "junegunn/fzf-bin", \
     as:command, \
     from:gh-r, \
