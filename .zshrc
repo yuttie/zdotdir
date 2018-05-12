@@ -249,7 +249,6 @@ unsetopt share_history
 # Other Options
 setopt print_eight_bit # show japanese filename correctly on completion
 setopt dvorak
-setopt ignore_eof # Ignore Ctrl-D and don't logout.
 setopt autocd autolist auto_pushd
 setopt listtypes
 unsetopt listambiguous
