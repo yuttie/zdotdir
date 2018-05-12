@@ -84,6 +84,8 @@ alias vimdiff='nvim -d'
 function Nvim() {
   env --unset TMUX st -e nvim "$@" >/dev/null 2>&1 &!
 }
+alias ltma='tmux new -A -s'
+alias clean-home="find ~/ -type f \( -name '*~' -o -name 'nohup.out' -o -name '.DS_Store' -o -name 'persp-auto-save*' \) -exec rm -fv '{}' \;"
 # Emacs
 alias et='KONSOLE_DBUS_SESSION=1 emacs --no-window-system'
 function eg() { emacs --display=${DISPLAY:-:0} "$@"&! }
@@ -127,7 +129,9 @@ alias -g F='| fzf'
 function wb() { $BROWSER $* > /dev/null 2>&1 &! }
 function fm() { pcmanfm $* > /dev/null 2>&1 &! }
 function encrypt() {
-  gpg --output ~/${1##*/}.gpg --cipher-algo AES256 -z 0 --symmetric $1
+  for f in "$@"; do
+    gpg --output "$f.gpg" --cipher-algo AES256 -z 0 --symmetric "$f"
+  done
 }
 
 function call_me_later() {
