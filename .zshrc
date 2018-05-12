@@ -42,6 +42,7 @@ autoload -Uz run-help-svn
 
 # Use hard limits, except for a smaller stack and no core dumps
 unlimit
+limit stack 8192
 limit coredumpsize 0
 limit -s # Set limits of current shell to previously set limits of children.
 
