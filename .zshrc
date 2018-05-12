@@ -379,6 +379,8 @@ export NOTIFY_COMMAND_COMPLETE_TIMEOUT=1
 source ~/.zsh.d/zsh-notify/notify.plugin.zsh
 
 # fzf
+zle -N fzf-fish-history-widget
+bindkey '^[r' fzf-fish-history-widget
 
 # http://qiita.com/Linda_pp/items/9ff801aa6e00459217f7
 function list-all-man-pages() {
