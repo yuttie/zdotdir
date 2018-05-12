@@ -9,7 +9,8 @@ export LANG='en_US.UTF-8'
 export EDITOR='nvim'
 export DICTIONARY=en_US
 
-export FZF_DEFAULT_OPTS='--color=dark,fg:-1,bg:-1,hl:1,fg+:15,bg+:8,hl+:1'
+export FZF_DEFAULT_OPTS='--height=50% --reverse --color=dark,fg:-1,bg:-1,hl:1,fg+:15,bg+:8,hl+:1'
+export FZF_CTRL_R_OPTS='--exact'
 
 export LESS='--RAW-CONTROL-CHARS --ignore-case --chop-long-lines'
 
