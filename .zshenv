@@ -26,9 +26,7 @@ export LESS_TERMCAP_ue=$'\E[0m'         # end underline
 
 export GREP_COLOR='01;35'
 
-export BC_ENV_ARGS="-l ${HOME}/.bc"
-
-export PYTHONSTARTUP=~/.pythonstartup
+export BC_ENV_ARGS="--mathlib $HOME/.bc"
 
 export GPG_TTY=`tty`
 
@@ -38,9 +36,19 @@ else
   export BROWSER='links'
 fi
 
-export RUST_SRC_PATH="~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+# Python
+export PYTHONSTARTUP="$HOME/.pythonstartup"
+export PIPENV_SHELL_FANCY=1
+
+# Rust
+export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
+
+# Node.js
 export NPM_PACKAGES="$HOME/.npm-packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+
+# Java
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 
 if [[ `uname` == 'Darwin' ]]; then
   export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$(find /usr/local/Cellar -name 'pkgconfig' -type d | sed -n -e '1h; 1!H; ${ x; s/\n/:/g; p; }')
