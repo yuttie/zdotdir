@@ -82,7 +82,7 @@ alias vim='nvim'
 alias view='nvim -R'
 alias vimdiff='nvim -d'
 function Nvim() {
-  env --unset TMUX st -e nvim "$@"&!
+  env --unset TMUX st -e nvim "$@" >/dev/null 2>&1 &!
 }
 # Emacs
 alias et='KONSOLE_DBUS_SESSION=1 emacs --no-window-system'
