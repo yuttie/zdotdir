@@ -195,6 +195,20 @@ export MANPATH
 #
 # Prompts
 #
+POWERLEVEL9K_COLOR_SCHEME='light'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir virtualenv rbenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status root_indicator background_jobs time)
+POWERLEVEL9K_DIR_HOME_FOREGROUND='black'
+POWERLEVEL9K_DIR_HOME_BACKGROUND='white'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='black'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='white'
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='black'
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='white'
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+DEFAULT_USER="$USER"
+
 # default prompt
 PROMPT=$'%B%(!.%F{red}root.%F{$host_color}%n)@%m%f %F{red}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f %F{black}[%D{%Y-%m-%d %H:%M:%S}]%f
 %F{magenta}>>>%f%b '
@@ -387,10 +401,6 @@ function reset-prompt-and-accept-line() { zle reset-prompt; zle accept-line; }
 zle -N reset-prompt-and-accept-line
 bindkey "\C-m" reset-prompt-and-accept-line
 
-# Show exit codes of commands
-function show_last_exit_code() { echo "$fg_bold[black]$?$reset_color"; }
-add-zsh-hook precmd show_last_exit_code
-
 # zsh-notify
 # https://github.com/marzocchi/zsh-notify
 # https://github.com/yuttie/zsh-notify
@@ -432,6 +442,7 @@ bindkey '^ m' fzf-man
 source ~/.zplug/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 zplug 'zsh-users/zsh-autosuggestions'
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
