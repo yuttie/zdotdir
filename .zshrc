@@ -465,6 +465,10 @@ zplug load
 # Properly clear autosuggestions
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=reset-prompt-and-accept-line
 
+# Bind keys for zsh-history-substring-search
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
 # Activate auto compeltion for aws-cli
 if [ -e `which aws_zsh_completer.sh` ]; then
   source `which aws_zsh_completer.sh`
