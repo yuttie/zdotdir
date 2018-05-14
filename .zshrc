@@ -176,7 +176,7 @@ case "$OSTYPE" in
     ;;
   *)
     additional_path=(~/.local/bin
-                     $(ls -1 -d ~/.gem/ruby/* | sort --version-sort --reverse | head -n1)/bin
+                     ~/.gem/ruby/*/bin(N)
                      ~/.cargo/bin
                      $NPM_PACKAGES/bin)
     ;;
