@@ -478,7 +478,7 @@ fi
 zle_highlight=(region:standout special:standout suffix:bold isearch:fg=magenta,underline paste:standout)
 
 ZSH_HIGHLIGHT_STYLES[default]=none
-ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=white
+ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red
 ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=cyan,bold
 ZSH_HIGHLIGHT_STYLES[alias]=fg=black
 ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=black,underline
