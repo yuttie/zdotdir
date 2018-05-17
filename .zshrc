@@ -12,7 +12,7 @@ case "$OSTYPE" in
 esac
 
 
-# Environment variables that are overridden after .zshenv
+# Environment variables overridden by system after .zshenv
 export LESSOPEN=""
 
 # Load host-specific configurations
