@@ -469,8 +469,8 @@ bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
 # Activate auto compeltion for aws-cli
-if [ -e `which aws_zsh_completer.sh` ]; then
-  source `which aws_zsh_completer.sh`
+if type aws_zsh_completer.sh >/dev/null; then
+  source $(which aws_zsh_completer.sh)
 fi
 
 # Highlighting
