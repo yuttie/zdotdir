@@ -107,7 +107,6 @@ case "$OSTYPE" in
   darwin*)
     alias eg='open -a /Applications/Emacs.app'
     alias ecg='emacsclient --alternate-editor='' --create-frame --no-wait'
-    alias rsync='rsync --iconv=UTF8-MAC,UTF8'
     unalias ls
     unalias open
     ;;
