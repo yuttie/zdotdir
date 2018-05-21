@@ -167,7 +167,8 @@ typeset -U path cdpath fpath manpath
 #
 case "$OSTYPE" in
   darwin*)
-    additional_path=(/usr/local/opt/ruby/bin)
+    additional_path=(/usr/local/opt/ruby/bin
+                     /usr/local/Cellar/git/*/share/git-core/contrib/diff-highlight(N))
     # Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
     export GHC_DOT_APP="/Applications/ghc-7.8.3.app"
     if [ -d "$GHC_DOT_APP" ]; then
