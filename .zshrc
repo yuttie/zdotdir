@@ -234,14 +234,14 @@ HISTFILE=~/.zsh_history
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # Fix $TERM if a terminfo for the terminal is not available
-if ! infocmp "$TERM" >/dev/null; then
+if ! infocmp "$TERM" >/dev/null 2>&1; then
   if [ "$TERM" = "rxvt-unicode-256color" ]; then
-    if infocmp "rxvt-256color" >/dev/null; then
+    if infocmp "rxvt-256color" >/dev/null 2>&1; then
       TERM="rxvt-256color"
     fi
   fi
   if [ "$TERM" = "tmux-256color" ]; then
-    if infocmp "screen-256color" >/dev/null; then
+    if infocmp "screen-256color" >/dev/null 2>&1; then
       TERM="screen-256color"
     fi
   fi
