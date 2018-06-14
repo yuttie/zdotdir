@@ -6,8 +6,6 @@ case "$OSTYPE" in
   darwin*)
     # keychain
     eval `keychain --eval --agents ssh,gpg --quick --inherit any id_ed25519 id_rsa`
-    # MacTeX
-    eval `/usr/libexec/path_helper -s`
     ;;
 esac
 
