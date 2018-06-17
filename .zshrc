@@ -305,6 +305,7 @@ zmodload -aF zsh/stat b:zstat
 
 # Key Bindings
 bindkey -e                  # use emacs key bindings
+bindkey '^[[Z' reverse-menu-complete
 
 
 #
