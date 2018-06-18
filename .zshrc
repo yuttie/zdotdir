@@ -82,7 +82,7 @@ alias vim='nvim'
 alias view='nvim -R'
 alias vimdiff='nvim -d'
 function Nvim() {
-  env --unset TMUX st -e nvim "$@" >/dev/null 2>&1 &!
+  nohup env --unset TMUX st -e nvim "$@" >/dev/null 2>&1 &!
 }
 alias ltma='tmux new -A -s'
 alias clean-home="find ~/ -type f \( -name '*~' -o -name 'nohup.out' -o -name '.DS_Store' -o -name 'persp-auto-save*' \) -exec rm -fv '{}' \;"
