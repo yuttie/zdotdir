@@ -224,8 +224,8 @@ RPROMPT='${vcs_info_msg_0_}'
 # Environment Variables
 #
 # History
-HISTSIZE=1000000
-SAVEHIST=1000000
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
 # other variables
