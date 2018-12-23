@@ -9,7 +9,7 @@ export LANG='en_US.UTF-8'
 export EDITOR='nvim'
 export DICTIONARY=en_US
 
-export FZF_DEFAULT_OPTS='--height=50% --reverse --color=dark,fg:-1,bg:-1,hl:1,fg+:15,bg+:8,hl+:1'
+export FZF_DEFAULT_OPTS='--height=50% --reverse --color=light,fg:8,bg:-1,hl:9,fg+:6,bg+:7,hl+:1,info:3,prompt:4,pointer:1,marker:5,spinner:3,header:4'
 export FZF_CTRL_R_OPTS='--exact'
 
 export LESS='--RAW-CONTROL-CHARS --ignore-case --chop-long-lines'
