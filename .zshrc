@@ -58,7 +58,9 @@ alias po=popd
 alias d='dirs -v'
 alias h=history
 alias grep='grep --color=auto'
-alias ls='ls --color=auto'
+if [[ "$OSTYPE" =~ '^linux' ]]; then
+  alias ls='ls --color=auto --time-style=long-iso'
+fi
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -a -l'
@@ -106,7 +108,6 @@ case "$OSTYPE" in
   darwin*)
     alias eg='open -a /Applications/Emacs.app'
     alias ecg='emacsclient --alternate-editor='' --create-frame --no-wait'
-    unalias ls
     unalias open
     ;;
 esac
