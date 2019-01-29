@@ -87,7 +87,15 @@ function Nvim() {
   nohup env --unset TMUX st -e nvim "$@" >/dev/null 2>&1 &!
 }
 alias ltma='tmux new -A -s'
-alias clean-home="find ~/ -type f \( -name '*~' -o -name 'nohup.out' -o -name '.DS_Store' -o -name 'persp-auto-save*' \) -exec rm -fv '{}' \;"
+function clean() {
+  if [ -z "$1" ]; then
+    echo An argument is required. 1>&2
+    return 1
+  fi
+
+  find $1 -type f \( -name '*~' -o -name 'nohup.out' -o -name '.DS_Store' -o -name '~$*' -o -name 'persp-auto-save*' -o -name '.~*#' \) -exec rm -fv '{}' \;
+}
+alias clean-home="clean ~/"
 # Emacs
 alias et='KONSOLE_DBUS_SESSION=1 emacs --no-window-system'
 function eg() { emacs --display=${DISPLAY:-:0} "$@"&! }
