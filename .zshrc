@@ -397,6 +397,9 @@ if [[ -n "$INSIDE_EMACS" ]]; then
   }
 fi
 
+# Antibody
+source ~/.zsh_plugins.sh
+
 # OPAM configuration
 if [ -e ~/.opam/opam-init/init.zsh ]; then
   source ~/.opam/opam-init/init.zsh >/dev/null 2>/dev/null || true
@@ -443,9 +446,6 @@ function fzf-man() {
 zle -N fzf-man
 bindkey '^ m' fzf-man
 
-
-# Antibody
-source ~/.zsh_plugins.sh
 
 # Properly clear autosuggestions
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=reset-prompt-and-accept-line
