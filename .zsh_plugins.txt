@@ -1,0 +1,13 @@
+bhilburn/powerlevel9k
+
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+zsh-users/zsh-syntax-highlighting
+# Must be loaded after zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
+
+b4b4r07/enhancd
+rust-lang/zsh-config
+
+junegunn/fzf
+junegunn/fzf-bin

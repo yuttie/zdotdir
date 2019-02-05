@@ -444,26 +444,8 @@ zle -N fzf-man
 bindkey '^ m' fzf-man
 
 
-# zplug
-source ~/.zplug/init.zsh
-
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
-zplug 'zsh-users/zsh-autosuggestions'
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-history-substring-search", defer:3  # Must be loaded after zsh-syntax-highlighting
-zplug "b4b4r07/enhancd", use:init.sh
-zplug "rust-lang/zsh-config"
-zplug "junegunn/fzf", \
-  use:"shell/*.zsh"
-zplug "junegunn/fzf-bin", \
-  as:command, \
-  from:gh-r, \
-  rename-to:fzf
-
-# Then, source plugins and add commands to $PATH
-zplug load
+# Antibody
+source ~/.zsh_plugins.sh
 
 # Properly clear autosuggestions
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=reset-prompt-and-accept-line
