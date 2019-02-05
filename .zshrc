@@ -459,11 +459,6 @@ if type aws_zsh_completer.sh >/dev/null; then
   source $(which aws_zsh_completer.sh)
 fi
 
-# enhancd
-ENHANCD_DOT_ARG="..."
-ENHANCD_HYPHEN_ARG="="
-ENHANCD_HOME_ARG="-h"
-
 # Highlighting
 zle_highlight=(region:standout special:standout suffix:bold isearch:fg=magenta,underline paste:standout)
 
