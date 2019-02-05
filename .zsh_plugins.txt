@@ -9,5 +9,4 @@ zsh-users/zsh-history-substring-search
 b4b4r07/enhancd
 rust-lang/zsh-config
 
-junegunn/fzf
-junegunn/fzf-bin
+junegunn/fzf path:shell
