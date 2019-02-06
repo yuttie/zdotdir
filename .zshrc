@@ -49,6 +49,7 @@ umask 022
 
 
 # Alias
+alias antibody-regen='antibody bundle < ~/zdotdir/.zsh_plugins.txt > ~/.zsh_plugins.sh'
 alias mv='nocorrect mv'       # no spelling correction
 alias cp='nocorrect cp'       # no spelling correction
 alias mkdir='nocorrect mkdir' # no spelling correction
