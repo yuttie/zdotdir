@@ -288,7 +288,7 @@ setopt equals extended_glob
 setopt globdots
 setopt long_list_jobs
 setopt clobber # Redirection can truncate existing files and create files.
-unsetopt notify # Notify immediately when background job exits.
+unsetopt notify # Don't report the status of background jobs immediately when background job exits.
 setopt prompt_subst
 setopt pushd_ignore_dups pushd_silent pushd_to_home
 setopt recexact rcquotes
