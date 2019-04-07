@@ -58,6 +58,7 @@ alias pu=pushd
 alias po=popd
 alias d='dirs -v'
 alias h=history
+alias history-all='history -i 1'
 alias grep='grep --color=auto'
 if [[ "$OSTYPE" =~ '^linux' ]]; then
   alias ls='ls --color=auto --time-style=long-iso'
