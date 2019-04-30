@@ -92,6 +92,9 @@ alias vimdiff='nvim -d'
 function Nvim() {
   nohup env --unset TMUX st -e nvim "$@" >/dev/null 2>&1 &!
 }
+function rgl() {
+  rg --color=always --heading --line-number "$@" | less -R
+}
 alias ltma='tmux new -A -s'
 function clean() {
   if [ -z "$1" ]; then
