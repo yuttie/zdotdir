@@ -27,6 +27,7 @@ autoload -U zcalc
 autoload -U zargs
 autoload -U url-quote-magic; zle -N self-insert url-quote-magic
 autoload -Uz add-zsh-hook
+autoload -Uz fzf-fish-history-widget
 # run-help
 export HELPDIR=/usr/share/zsh/$ZSH_VERSION/help
 unalias run-help && autoload -Uz run-help
