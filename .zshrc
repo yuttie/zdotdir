@@ -1,11 +1,11 @@
 case "$OSTYPE" in
   linux*)
     # keychain
-    eval `keychain --eval --agents ssh,gpg --quick id_ed25519 id_rsa_4096`
+    eval `keychain --eval --agents ssh,gpg --quiet --quick id_ed25519 id_rsa_4096`
     ;;
   darwin*)
     # keychain
-    eval `keychain --eval --agents ssh,gpg --quick --inherit any id_ed25519 id_rsa`
+    eval `keychain --eval --agents ssh,gpg --quiet --quick --inherit any id_ed25519 id_rsa`
     ;;
 esac
 
