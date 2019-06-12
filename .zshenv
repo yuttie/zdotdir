@@ -50,10 +50,6 @@ export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 # Java
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 
-if [[ `uname` == 'Darwin' ]]; then
-  export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$(find /usr/local/Cellar -name 'pkgconfig' -type d | sed -n -e '1h; 1!H; ${ x; s/\n/:/g; p; }')
-fi
-
 if [ -f ~/.dir_colors ]; then
   if which dircolors >/dev/null 2>&1; then
     eval $(dircolors ~/.dir_colors)
