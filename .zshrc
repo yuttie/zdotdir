@@ -235,6 +235,14 @@ zstyle ':vcs_info:*' formats       '%B%s:%F{green}%b%f%c%u'
 zstyle ':vcs_info:*' actionformats '%B%s:%F{green}%b%f%F{red}>%a%f%c%u'
 function precmd_vcs_info() { LANG=en_US.UTF-8 vcs_info }
 add-zsh-hook precmd precmd_vcs_info
+function precmd_blank_line() {
+  if [ -z "$PRECMD_BLANK_LINE" ]; then
+    PRECMD_BLANK_LINE=1
+  else
+    echo ""
+  fi
+}
+add-zsh-hook precmd precmd_blank_line
 RPROMPT='${vcs_info_msg_0_}'
 
 
