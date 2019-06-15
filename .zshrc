@@ -189,6 +189,7 @@ case "$OSTYPE" in
   darwin*)
     additional_path=(/usr/local/opt/ruby/bin
                      /usr/local/Cellar/git/*/share/git-core/contrib/diff-highlight(N)
+                     /usr/local/sbin
                      $additional_path)
     ;;
 esac
