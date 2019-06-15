@@ -111,7 +111,7 @@ function eg() { emacs --display=${DISPLAY:-:0} "$@"&! }
 function egt() {
   env --unset TMUX \
       KONSOLE_DBUS_SESSION=1 \
-      ~/dotfiles/launch-st -e emacs --no-window-system "$@"&!
+      ~/dotfiles/term -e emacs --no-window-system "$@"&!
 }
 # Emacsclient
 alias ecg='emacsclient --alternate-editor='' --create-frame --display=${DISPLAY:-:0} --no-wait'
