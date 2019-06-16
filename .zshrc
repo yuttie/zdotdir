@@ -184,7 +184,8 @@ typeset -U path cdpath fpath manpath
 additional_path=(~/.local/bin
                  ~/.gem/ruby/*/bin(N)
                  ~/.cargo/bin
-                 $NPM_PACKAGES/bin)
+                 $NPM_PACKAGES/bin
+                 /usr/local/texlive/2019/bin/x86_64-linux)
 case "$OSTYPE" in
   darwin*)
     additional_path=(/usr/local/opt/ruby/bin
@@ -200,8 +201,12 @@ done
 export PATH
 
 unset MANPATH
-manpath=($NPM_PACKAGES/share/man $(manpath))
+manpath=($NPM_PACKAGES/share/man
+         /usr/local/texlive/2019/texmf-dist/doc/man
+         $(manpath))
 export MANPATH
+
+export INFOPATH="/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH"
 
 
 #
