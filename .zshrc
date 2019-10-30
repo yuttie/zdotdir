@@ -200,10 +200,9 @@ for (( i=${#additional_path[@]}; i>0; i-- )); do
 done
 export PATH
 
-unset MANPATH
 manpath=($NPM_PACKAGES/share/man
          /usr/local/texlive/2019/texmf-dist/doc/man
-         $(manpath))
+         $MANPATH)
 export MANPATH
 
 export INFOPATH="/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH"
