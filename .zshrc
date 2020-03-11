@@ -390,8 +390,6 @@ zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns \
   '*?.old' '*?.pro'
 # ignore completion functions (until the _ignored completer)
 zstyle ':completion:*:functions' ignored-patterns '_*'
-# Sort by modification time
-zstyle ':completion:*' file-sort modification reverse
 # Disable completion for some commands.
 compdef -d p4
 
