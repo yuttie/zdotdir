@@ -31,7 +31,7 @@ export BC_ENV_ARGS="--mathlib $HOME/.bc"
 export GPG_TTY=`tty`
 
 if [ -n "$DISPLAY" ]; then
-  export BROWSER='firefox'
+  export BROWSER='google-chrome-stable'
 else
   export BROWSER='links'
 fi
