@@ -469,7 +469,7 @@ function fzf-man() {
     fi
 }
 zle -N fzf-man
-bindkey '^ m' fzf-man
+bindkey '^[m' fzf-man
 
 
 # Properly clear autosuggestions
