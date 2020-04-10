@@ -490,7 +490,7 @@ function edit-note() {
     preview_cmd="bat --color=always {}"
   fi
   # Choose a note
-  local fp=$(cd $ZSH_NOTE_DIR; find . -type f -regextype egrep -regex '.*\.(md|org|rst|asciidoc|adoc|txt)$' | sed -e 's!^\./!!' | fzf --preview "$preview_cmd")
+  local fp=$(cd $ZSH_NOTE_DIR; find . -type f -regextype egrep -regex '.*\.(md|org|rst|asciidoc|adoc|txt)$' | cut -b3- | fzf --preview "$preview_cmd")
   zle reset-prompt
   # Open the chosen note
   if [ -n "$fp" ]; then
