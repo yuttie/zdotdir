@@ -464,6 +464,7 @@ function list-all-man-pages() {
 
 function fzf-man() {
     local selected=$(list-all-man-pages | fzf --prompt='man> ')
+    zle reset-prompt
     if [[ "$selected" != "" ]]; then
         man "$selected"
     fi
