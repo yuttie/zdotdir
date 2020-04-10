@@ -481,6 +481,28 @@ zle -N insert-date-timestamp
 bindkey '^[t' insert-date-timestamp
 
 
+# Edit a note
+ZSH_NOTE_DIR="$HOME/Notes"
+function edit-note() {
+  # Decide which command to use
+  local preview_cmd="cat {}"
+  if command -v bat &>/dev/null; then
+    preview_cmd="bat --color=always {}"
+  fi
+  # Choose a note
+  local fp=$(cd $ZSH_NOTE_DIR; find . -type f -regextype egrep -regex '.*\.(md|org|rst|asciidoc|adoc|txt)$' | sed -e 's!^\./!!' | fzf --preview "$preview_cmd")
+  zle reset-prompt
+  # Open the chosen note
+  if [ -n "$fp" ]; then
+    BUFFER="$EDITOR \"$ZSH_NOTE_DIR/$fp\""
+    zle accept-line
+  fi
+}
+
+zle -N edit-note
+bindkey '^[n' edit-note
+
+
 # Properly clear autosuggestions
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=reset-prompt-and-accept-line
 
