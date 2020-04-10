@@ -450,7 +450,7 @@ function list-all-man-pages() {
     local parent dir file
     local paths=("${(s/:/)$(man -aw)}")
     for parent in $paths; do
-        for dir in $(/bin/ls -1 $parent); do
+        for dir in $(/bin/ls -1 $parent 2>/dev/null); do
             local p="${parent}/${dir}"
             if [ -d "$p" ]; then
                 IFS=$'\n' local lines=($(/bin/ls -1 "$p"))
