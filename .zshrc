@@ -472,6 +472,14 @@ zle -N fzf-man
 bindkey '^[m' fzf-man
 
 
+# Insert timestamp
+function insert-date-timestamp() {
+  LBUFFER="${LBUFFER}\$(date +%Y-%m-%d-%H%M%S)"
+}
+zle -N insert-date-timestamp
+bindkey '^[t' insert-date-timestamp
+
+
 # Properly clear autosuggestions
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=reset-prompt-and-accept-line
 
