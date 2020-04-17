@@ -185,7 +185,7 @@ additional_path=(~/.local/bin
                  ~/.gem/ruby/*/bin(N)
                  ~/.cargo/bin
                  $NPM_PACKAGES/bin
-                 /usr/local/texlive/2019/bin/x86_64-linux)
+                 /usr/local/texlive/2020/bin/x86_64-linux)
 case "$OSTYPE" in
   darwin*)
     additional_path=(/usr/local/opt/ruby/bin
@@ -201,11 +201,11 @@ done
 export PATH
 
 manpath=($NPM_PACKAGES/share/man
-         /usr/local/texlive/2019/texmf-dist/doc/man
+         /usr/local/texlive/2020/texmf-dist/doc/man
          $MANPATH)
 export MANPATH
 
-export INFOPATH="/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH"
+export INFOPATH="/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH"
 
 
 #
