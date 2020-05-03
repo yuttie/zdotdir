@@ -90,7 +90,7 @@ alias vim='nvim'
 alias view='nvim -R'
 alias vimdiff='nvim -d'
 function Nvim() {
-  nohup env --unset TMUX st -e nvim "$@" >/dev/null 2>&1 &!
+  nohup env --unset TMUX ~/.local/bin/term -e nvim "$@" >/dev/null 2>&1 &!
 }
 function rgl() {
   rg --color=always --heading --line-number "$@" | less -R
