@@ -237,24 +237,6 @@ export INFOPATH="/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH"
 
 
 #
-# Prompts
-#
-
-# default prompt
-PROMPT=$'%B%(!.%F{red}root.%F{$host_color}%n)@%m%f %F{red}%$((COLUMNS - (${#USER} + 1 + ${#HOST} + 1)))<...<%~%f %F{black}[%D{%Y-%m-%d %H:%M:%S}]%f
-%F{magenta}>>>%f%b '
-
-# prompt for right side of screen
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr   '%F{yellow}+%f'
-zstyle ':vcs_info:git:*' unstagedstr '%F{red}!%f'
-zstyle ':vcs_info:*' formats       '%B%s:%F{green}%b%f%c%u'
-zstyle ':vcs_info:*' actionformats '%B%s:%F{green}%b%f%F{red}>%a%f%c%u'
-function precmd_vcs_info() { LANG=en_US.UTF-8 vcs_info }
-add-zsh-hook precmd precmd_vcs_info
-
-
-#
 # Environment Variables
 #
 # History
