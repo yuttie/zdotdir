@@ -179,32 +179,53 @@ typeset -U path cdpath fpath manpath
 
 
 #
-# Path
+# PATH
 #
-additional_path=(~/.local/bin
-                 ~/.gem/ruby/*/bin(N)
-                 ~/.cargo/bin
-                 $NPM_PACKAGES/bin
-                 /usr/local/texlive/2020/bin/x86_64-linux)
+# TODO this takes around 7ms
+
+# Define the base paths
+additional_paths=(
+  ~/.local/bin
+  ~/.poetry/bin
+  ~/.cargo/bin
+  ~/go/bin
+  ~/.yarn/bin
+  $NPM_PACKAGES/bin
+  ~/.gem/ruby/*/bin(N)
+  /usr/local/texlive/2020/bin/x86_64-linux
+)
+
+# Add extra paths for macOS
 case "$OSTYPE" in
   darwin*)
-    additional_path=(/usr/local/opt/ruby/bin
-                     /usr/local/Cellar/git/*/share/git-core/contrib/diff-highlight(N)
-                     /usr/local/sbin
-                     $additional_path)
+    additional_paths=(
+      ~/Library/Python/3.7/bin
+      /usr/local/opt/ruby/bin
+      /usr/local/Cellar/git/*/share/git-core/contrib/diff-highlight(N)
+      /usr/local/sbin
+      $additional_paths
+    )
     ;;
 esac
-for (( i=${#additional_path[@]}; i>0; i-- )); do
-  d=${additional_path[i]}
+
+# Export PATH
+for (( i=${#additional_paths[@]}; i>0; i-- )); do
+  d=${additional_paths[i]}
   [[ -d $d ]] && path=($d $path)
 done
 export PATH
 
+#
+# MANPATH
+#
 manpath=($NPM_PACKAGES/share/man
          /usr/local/texlive/2020/texmf-dist/doc/man
          $MANPATH)
 export MANPATH
 
+#
+# INFOPATH
+#
 export INFOPATH="/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH"
 
 
